@@ -172,7 +172,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Aprendiz\\Desktop\\Mascotas\\backendJDB\\generated\\prisma",
+      "value": "C:\\Users\\Adminsena\\Desktop\\mascotasJDB\\backendJDB\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -186,11 +186,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Aprendiz\\Desktop\\Mascotas\\backendJDB\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Adminsena\\Desktop\\mascotasJDB\\backendJDB\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",
@@ -200,11 +200,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mysql://root:@localhost:3306/mascotas"
+        "value": null
       }
     }
   },

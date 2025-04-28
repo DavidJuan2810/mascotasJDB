@@ -1,5 +1,5 @@
-import { prisma } from '../prismaClient.js'; // Asegúrate de tener tu cliente de Prisma configurado
-
+import { PrismaClient } from '../../generated/prisma/client.js';  
+const prisma = new PrismaClient;
 // Obtener todos los géneros
 export const getGeneros = async (req, res) => {
   try {

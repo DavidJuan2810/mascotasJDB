@@ -1,4 +1,5 @@
-import { prisma } from '../prisma/client.js';
+import { PrismaClient } from '../../generated/prisma/client.js';  
+const prisma = new PrismaClient;
 
 // Obtener todos los usuarios
 export const getUsuarios = async (req, res) => {

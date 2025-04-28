@@ -1,4 +1,5 @@
-import { prisma } from '../prismaClient.js'; // Asegúrate de que tu prismaClient esté bien importado
+import { PrismaClient } from '../../generated/prisma/client.js';  
+const prisma = new PrismaClient;
 
 // Obtener todas las categorías
 export const getCategorias = async (req, res) => {
