@@ -17,11 +17,11 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use('/api/usuarios', usuariosRoutes);
-app.use('/api/mascotas', mascotasRoutes);
-app.use('/api/razas', razaRoutes);
-app.use('/api/generos', generoRoutes);
-app.use('/api/categorias', categoriasRoutes);
+app.use('/api', usuariosRoutes);
+app.use('/api', mascotasRoutes);
+app.use('/api', razaRoutes);
+app.use('/api', generoRoutes);
+app.use('/api', categoriasRoutes);
 
 // Test de conexión
 app.get('/', (req, res) => {

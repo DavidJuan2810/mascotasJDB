@@ -21,7 +21,7 @@ enum estado {
 
 model Usuarios {
   id       Int        @id @default(autoincrement())
-  nomre    String
+  nombre   String
   email    String     @unique
   password String
   mascotas Mascotas[]

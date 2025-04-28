@@ -32,10 +32,10 @@ export const getUsuarioById = async (req, res) => {
 
 // Crear un nuevo usuario
 export const createUsuario = async (req, res) => {
-  const { nomre, email, password } = req.body;
+  const { nombre, email, password } = req.body;
   try {
     const nuevoUsuario = await prisma.usuarios.create({
-      data: { nomre, email, password },
+      data: { nombre, email, password },
     });
     res.status(201).json(nuevoUsuario);
   } catch (error) {
@@ -47,11 +47,11 @@ export const createUsuario = async (req, res) => {
 // Actualizar todo un usuario
 export const updateUsuario = async (req, res) => {
   const { id } = req.params;
-  const { nomre, email, password } = req.body;
+  const { nombre, email, password } = req.body;
   try {
     const usuarioActualizado = await prisma.usuarios.update({
       where: { id: parseInt(id) },
-      data: { nomre, email, password },
+      data: { nombre, email, password },
     });
     res.status(200).json(usuarioActualizado);
   } catch (error) {

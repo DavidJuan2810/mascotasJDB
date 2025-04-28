@@ -1355,21 +1355,21 @@ export namespace Prisma {
 
   export type UsuariosMinAggregateOutputType = {
     id: number | null
-    nomre: string | null
+    nombre: string | null
     email: string | null
     password: string | null
   }
 
   export type UsuariosMaxAggregateOutputType = {
     id: number | null
-    nomre: string | null
+    nombre: string | null
     email: string | null
     password: string | null
   }
 
   export type UsuariosCountAggregateOutputType = {
     id: number
-    nomre: number
+    nombre: number
     email: number
     password: number
     _all: number
@@ -1386,21 +1386,21 @@ export namespace Prisma {
 
   export type UsuariosMinAggregateInputType = {
     id?: true
-    nomre?: true
+    nombre?: true
     email?: true
     password?: true
   }
 
   export type UsuariosMaxAggregateInputType = {
     id?: true
-    nomre?: true
+    nombre?: true
     email?: true
     password?: true
   }
 
   export type UsuariosCountAggregateInputType = {
     id?: true
-    nomre?: true
+    nombre?: true
     email?: true
     password?: true
     _all?: true
@@ -1494,7 +1494,7 @@ export namespace Prisma {
 
   export type UsuariosGroupByOutputType = {
     id: number
-    nomre: string
+    nombre: string
     email: string
     password: string
     _count: UsuariosCountAggregateOutputType | null
@@ -1520,7 +1520,7 @@ export namespace Prisma {
 
   export type UsuariosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    nomre?: boolean
+    nombre?: boolean
     email?: boolean
     password?: boolean
     mascotas?: boolean | Usuarios$mascotasArgs<ExtArgs>
@@ -1531,12 +1531,12 @@ export namespace Prisma {
 
   export type UsuariosSelectScalar = {
     id?: boolean
-    nomre?: boolean
+    nombre?: boolean
     email?: boolean
     password?: boolean
   }
 
-  export type UsuariosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nomre" | "email" | "password", ExtArgs["result"]["usuarios"]>
+  export type UsuariosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "email" | "password", ExtArgs["result"]["usuarios"]>
   export type UsuariosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     mascotas?: boolean | Usuarios$mascotasArgs<ExtArgs>
     _count?: boolean | UsuariosCountOutputTypeDefaultArgs<ExtArgs>
@@ -1549,7 +1549,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      nomre: string
+      nombre: string
       email: string
       password: string
     }, ExtArgs["result"]["usuarios"]>
@@ -1923,7 +1923,7 @@ export namespace Prisma {
    */
   interface UsuariosFieldRefs {
     readonly id: FieldRef<"Usuarios", 'Int'>
-    readonly nomre: FieldRef<"Usuarios", 'String'>
+    readonly nombre: FieldRef<"Usuarios", 'String'>
     readonly email: FieldRef<"Usuarios", 'String'>
     readonly password: FieldRef<"Usuarios", 'String'>
   }
@@ -6219,7 +6219,7 @@ export namespace Prisma {
 
   export const UsuariosScalarFieldEnum: {
     id: 'id',
-    nomre: 'nomre',
+    nombre: 'nombre',
     email: 'email',
     password: 'password'
   };
@@ -6274,7 +6274,7 @@ export namespace Prisma {
 
 
   export const UsuariosOrderByRelevanceFieldEnum: {
-    nomre: 'nomre',
+    nombre: 'nombre',
     email: 'email',
     password: 'password'
   };
@@ -6352,7 +6352,7 @@ export namespace Prisma {
     OR?: UsuariosWhereInput[]
     NOT?: UsuariosWhereInput | UsuariosWhereInput[]
     id?: IntFilter<"Usuarios"> | number
-    nomre?: StringFilter<"Usuarios"> | string
+    nombre?: StringFilter<"Usuarios"> | string
     email?: StringFilter<"Usuarios"> | string
     password?: StringFilter<"Usuarios"> | string
     mascotas?: MascotasListRelationFilter
@@ -6360,7 +6360,7 @@ export namespace Prisma {
 
   export type UsuariosOrderByWithRelationInput = {
     id?: SortOrder
-    nomre?: SortOrder
+    nombre?: SortOrder
     email?: SortOrder
     password?: SortOrder
     mascotas?: MascotasOrderByRelationAggregateInput
@@ -6373,14 +6373,14 @@ export namespace Prisma {
     AND?: UsuariosWhereInput | UsuariosWhereInput[]
     OR?: UsuariosWhereInput[]
     NOT?: UsuariosWhereInput | UsuariosWhereInput[]
-    nomre?: StringFilter<"Usuarios"> | string
+    nombre?: StringFilter<"Usuarios"> | string
     password?: StringFilter<"Usuarios"> | string
     mascotas?: MascotasListRelationFilter
   }, "id" | "email">
 
   export type UsuariosOrderByWithAggregationInput = {
     id?: SortOrder
-    nomre?: SortOrder
+    nombre?: SortOrder
     email?: SortOrder
     password?: SortOrder
     _count?: UsuariosCountOrderByAggregateInput
@@ -6395,7 +6395,7 @@ export namespace Prisma {
     OR?: UsuariosScalarWhereWithAggregatesInput[]
     NOT?: UsuariosScalarWhereWithAggregatesInput | UsuariosScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Usuarios"> | number
-    nomre?: StringWithAggregatesFilter<"Usuarios"> | string
+    nombre?: StringWithAggregatesFilter<"Usuarios"> | string
     email?: StringWithAggregatesFilter<"Usuarios"> | string
     password?: StringWithAggregatesFilter<"Usuarios"> | string
   }
@@ -6612,7 +6612,7 @@ export namespace Prisma {
   }
 
   export type UsuariosCreateInput = {
-    nomre: string
+    nombre: string
     email: string
     password: string
     mascotas?: MascotasCreateNestedManyWithoutUsuarioInput
@@ -6620,14 +6620,14 @@ export namespace Prisma {
 
   export type UsuariosUncheckedCreateInput = {
     id?: number
-    nomre: string
+    nombre: string
     email: string
     password: string
     mascotas?: MascotasUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuariosUpdateInput = {
-    nomre?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mascotas?: MascotasUpdateManyWithoutUsuarioNestedInput
@@ -6635,7 +6635,7 @@ export namespace Prisma {
 
   export type UsuariosUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nomre?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mascotas?: MascotasUncheckedUpdateManyWithoutUsuarioNestedInput
@@ -6643,20 +6643,20 @@ export namespace Prisma {
 
   export type UsuariosCreateManyInput = {
     id?: number
-    nomre: string
+    nombre: string
     email: string
     password: string
   }
 
   export type UsuariosUpdateManyMutationInput = {
-    nomre?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
   export type UsuariosUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nomre?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
@@ -6883,7 +6883,7 @@ export namespace Prisma {
 
   export type UsuariosCountOrderByAggregateInput = {
     id?: SortOrder
-    nomre?: SortOrder
+    nombre?: SortOrder
     email?: SortOrder
     password?: SortOrder
   }
@@ -6894,14 +6894,14 @@ export namespace Prisma {
 
   export type UsuariosMaxOrderByAggregateInput = {
     id?: SortOrder
-    nomre?: SortOrder
+    nombre?: SortOrder
     email?: SortOrder
     password?: SortOrder
   }
 
   export type UsuariosMinOrderByAggregateInput = {
     id?: SortOrder
-    nomre?: SortOrder
+    nombre?: SortOrder
     email?: SortOrder
     password?: SortOrder
   }
@@ -7511,14 +7511,14 @@ export namespace Prisma {
   }
 
   export type UsuariosCreateWithoutMascotasInput = {
-    nomre: string
+    nombre: string
     email: string
     password: string
   }
 
   export type UsuariosUncheckedCreateWithoutMascotasInput = {
     id?: number
-    nomre: string
+    nombre: string
     email: string
     password: string
   }
@@ -7582,14 +7582,14 @@ export namespace Prisma {
   }
 
   export type UsuariosUpdateWithoutMascotasInput = {
-    nomre?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
   export type UsuariosUncheckedUpdateWithoutMascotasInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nomre?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }

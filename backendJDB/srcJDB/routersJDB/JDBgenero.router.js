@@ -10,11 +10,11 @@ import {
 
 const router = Router();
 
-router.get('/', getGeneros);
-router.get('/:id', getGeneroById);
-router.post('/', createGenero);
-router.put('/:id', updateGenero);
-router.patch('/:id', patchGenero);
-router.delete('/:id', deleteGenero);
+router.get('/genero', getGeneros);
+router.get('/genero/:id', getGeneroById);
+router.post('/genero', createGenero);
+router.put('/genero/:id', updateGenero);
+router.patch('/genero/:id', patchGenero);
+router.delete('/genero/:id', deleteGenero);
 
 export default router;

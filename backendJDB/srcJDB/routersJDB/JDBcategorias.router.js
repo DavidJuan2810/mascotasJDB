@@ -10,11 +10,11 @@ import {
 
 const router = Router();
 
-router.get('/', getCategorias);
-router.get('/:id', getCategoriaById);
-router.post('/', createCategoria);
-router.put('/:id', updateCategoria);
-router.patch('/:id', patchCategoria);
-router.delete('/:id', deleteCategoria);
+router.get('/categorias', getCategorias);
+router.get('/categorias/:id', getCategoriaById);
+router.post('/categorias', createCategoria);
+router.put('/categorias/:id', updateCategoria);
+router.patch('/categorias/:id', patchCategoria);
+router.delete('/categorias/:id', deleteCategoria);
 
 export default router;
