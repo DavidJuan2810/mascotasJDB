@@ -2,7 +2,7 @@ import { PrismaClient } from '../../generated/prisma/client.js';
 const prisma = new PrismaClient;
 
 // Obtener todas las categorías
-export const getCategorias = async (req, res) => {
+export const getCategoriasJDB = async (req, res) => {
   try {
     const categorias = await prisma.categorias.findMany();
     res.json(categorias);
@@ -13,7 +13,7 @@ export const getCategorias = async (req, res) => {
 };
 
 // Obtener una categoría por ID
-export const getCategoriaById = async (req, res) => {
+export const getCategoriaByIdJDB = async (req, res) => {
   try {
     const { id } = req.params;
     const categoria = await prisma.categorias.findUnique({
@@ -32,7 +32,7 @@ export const getCategoriaById = async (req, res) => {
 };
 
 // Crear una nueva categoría
-export const createCategoria = async (req, res) => {
+export const createCategoriaJDB = async (req, res) => {
   try {
     const { nombre } = req.body;
 
@@ -48,7 +48,7 @@ export const createCategoria = async (req, res) => {
 };
 
 // Actualizar completamente una categoría (PUT)
-export const updateCategoria = async (req, res) => {
+export const updateCategoriaJDB = async (req, res) => {
   try {
     const { id } = req.params;
     const { nombre } = req.body;
@@ -74,7 +74,7 @@ export const updateCategoria = async (req, res) => {
 };
 
 // Actualizar parcialmente una categoría (PATCH)
-export const patchCategoria = async (req, res) => {
+export const patchCategoriaJDB = async (req, res) => {
   try {
     const { id } = req.params;
     const { nombre } = req.body;
@@ -102,7 +102,7 @@ export const patchCategoria = async (req, res) => {
 };
 
 // Eliminar una categoría
-export const deleteCategoria = async (req, res) => {
+export const deleteCategoriaJDB = async (req, res) => {
   try {
     const { id } = req.params;
 

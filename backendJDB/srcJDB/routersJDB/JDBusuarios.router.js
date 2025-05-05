@@ -1,26 +1,26 @@
 import { Router } from 'express';
 import {
-  getUsuarios,
-  getUsuarioById,
-  createUsuario,
-  updateUsuario,
-  patchUsuario,
-  deleteUsuario
+  getUsuariosJDB,
+  getUsuarioByIdJDB,
+  createUsuarioJDB,
+  updateUsuarioJDB,
+  patchUsuarioJDB,
+  deleteUsuarioJDB
 } from '../controllersJDB/JDBusuariosController.js';
 import {register, login} from '../controllersJDB/authController.js'
-import { authMiddleware } from '../middleware/auth.js';
+import { authMiddlewareJDB } from '../middleware/auth.js';
 
-const router = Router();
+const routerUsuarioJDB = Router();
 
 // Rutas de autenticación (no protegidas)
-router.post('/register', register);
-router.post('/login', login);
+routerUsuarioJDB.post('/register', register);
+routerUsuarioJDB.post('/login', login);
 
-router.get('/usuario',authMiddleware, getUsuarios);
-router.get('/usuario/:id',authMiddleware, getUsuarioById);
-router.post('/usuario',authMiddleware, createUsuario);
-router.put('/usuario/:id',authMiddleware, updateUsuario);
-router.patch('/usuario/:id',authMiddleware, patchUsuario);
-router.delete('/usuario/:id',authMiddleware, deleteUsuario);
+routerUsuarioJDB.get('/usuariojdb',authMiddlewareJDB, getUsuariosJDB);
+routerUsuarioJDB.get('/usuariojdb/:id',authMiddlewareJDB, getUsuarioByIdJDB);
+routerUsuarioJDB.post('/usuariojdb',authMiddlewareJDB, createUsuarioJDB);
+routerUsuarioJDB.put('/usuariojdb/:id',authMiddlewareJDB, updateUsuarioJDB);
+routerUsuarioJDB.patch('/usuariojdb/:id',authMiddlewareJDB, patchUsuarioJDB);
+routerUsuarioJDB.delete('/usuariojdb/:id',authMiddlewareJDB, deleteUsuarioJDB);
 
-export default router;
+export default routerUsuarioJDB;

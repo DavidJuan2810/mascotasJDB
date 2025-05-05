@@ -1,7 +1,7 @@
 import { PrismaClient } from '../../generated/prisma/client.js';  
 const prisma = new PrismaClient;
 // Obtener todos los géneros
-export const getGeneros = async (req, res) => {
+export const getGenerosJDB = async (req, res) => {
   try {
     const generos = await prisma.genero.findMany();
     res.json(generos);
@@ -12,7 +12,7 @@ export const getGeneros = async (req, res) => {
 };
 
 // Obtener un género por ID
-export const getGeneroById = async (req, res) => {
+export const getGeneroByIdJDB = async (req, res) => {
   try {
     const { id } = req.params;
     const genero = await prisma.genero.findUnique({
@@ -31,7 +31,7 @@ export const getGeneroById = async (req, res) => {
 };
 
 // Crear un nuevo género
-export const createGenero = async (req, res) => {
+export const createGeneroJDB = async (req, res) => {
   try {
     const { nombre } = req.body;
 
@@ -47,7 +47,7 @@ export const createGenero = async (req, res) => {
 };
 
 // Actualizar completamente un género (PUT)
-export const updateGenero = async (req, res) => {
+export const updateGeneroJDB = async (req, res) => {
   try {
     const { id } = req.params;
     const { nombre } = req.body;
@@ -73,7 +73,7 @@ export const updateGenero = async (req, res) => {
 };
 
 // Actualizar parcialmente un género (PATCH)
-export const patchGenero = async (req, res) => {
+export const patchGeneroJDB = async (req, res) => {
   try {
     const { id } = req.params;
     const { nombre } = req.body;
@@ -101,7 +101,7 @@ export const patchGenero = async (req, res) => {
 };
 
 // Eliminar un género
-export const deleteGenero = async (req, res) => {
+export const deleteGeneroJDB = async (req, res) => {
   try {
     const { id } = req.params;
 

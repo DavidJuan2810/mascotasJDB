@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 const SECRET_KEY = process.env.JWT_SECRET || 'JDB10';
 
-export const authMiddleware = (req, res, next) => {
+export const authMiddlewareJDB = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
 
   if (!token) {

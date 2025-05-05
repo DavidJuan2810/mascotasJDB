@@ -2,7 +2,7 @@ import { PrismaClient } from '../../generated/prisma/client.js';
 const prisma = new PrismaClient;
 
 // Obtener todos los usuarios
-export const getUsuarios = async (req, res) => {
+export const getUsuariosJDB = async (req, res) => {
   try {
     const usuarios = await prisma.usuarios.findMany({
       include: { mascotas: true },
@@ -15,7 +15,7 @@ export const getUsuarios = async (req, res) => {
 };
 
 // Obtener un usuario por ID
-export const getUsuarioById = async (req, res) => {
+export const getUsuarioByIdJDB = async (req, res) => {
   const { id } = req.params;
   try {
     const usuario = await prisma.usuarios.findUnique({
@@ -31,7 +31,7 @@ export const getUsuarioById = async (req, res) => {
 };
 
 // Crear un nuevo usuario
-export const createUsuario = async (req, res) => {
+export const createUsuarioJDB = async (req, res) => {
   const { nombre, email, password } = req.body;
   try {
     // Encriptar la contraseña
@@ -48,7 +48,7 @@ export const createUsuario = async (req, res) => {
 };
 
 // Actualizar todo un usuario
-export const updateUsuario = async (req, res) => {
+export const updateUsuarioJDB = async (req, res) => {
   const { id } = req.params;
   const { nombre, email, password } = req.body;
   try {
@@ -70,7 +70,7 @@ export const updateUsuario = async (req, res) => {
 };
 
 // Actualizar parcialmente un usuario
-export const patchUsuario = async (req, res) => {
+export const patchUsuarioJDB = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
   try {
@@ -90,7 +90,7 @@ export const patchUsuario = async (req, res) => {
   }
 };
 // Eliminar un usuario
-export const deleteUsuario = async (req, res) => {
+export const deleteUsuarioJDB = async (req, res) => {
   const { id } = req.params;
   try {
     await prisma.usuarios.delete({

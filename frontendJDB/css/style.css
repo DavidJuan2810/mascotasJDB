@@ -12,43 +12,54 @@
   min-height: 100vh;
 }
 
-/* Columna de la imagen */
-.image-column {
-  background-image: url('../assets/bg-login.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.static {
+  position: fixed;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
-/* Columna del formulario */
-.form-column {
+#VistaLogin {
+  border-radius: 20px;
+  padding: 10px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-/* Estilos para el contenedor del formulario */
-.login-box {
-  width: 80%;
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 900px;
   text-align: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
-/* Estilos para el título */
-h1 {
+#loginView form input {
+  padding: 12px 70px; /* horizontalmente */
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.178); 
   color: #333;
-  margin-bottom: 20px;
-  font-size: 24px;
+  backdrop-filter: blur(4px);
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
 }
 
-h2 {
-  color: #333;
-  margin-bottom: 15px;
-  font-size: 20px;
+.img_static{
+  position: fixed;
+  top: -0%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  height: auto;
+  object-fit: contain;
+  z-index: 0; /*para la imagen*/;
+  display: block; /* Mostrar por defecto */
 }
 
 /* Estilos para los inputs */

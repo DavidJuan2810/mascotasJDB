@@ -1,22 +1,22 @@
 import { Router } from 'express';
 import {
-  getRazas,
-  getRazaById,
-  createRaza,
-  updateRaza,
-  patchRaza,
-  deleteRaza
+  getRazasJDB,
+  getRazaByIdJDB,
+  createRazaJDB,
+  updateRazaJDB,
+  patchRazaJDB,
+  deleteRazaJDB
 } from '../controllersJDB/JDBraza.controller.js';
-import { authMiddleware } from '../middleware/auth.js';
+import { authMiddlewareJDB } from '../middleware/auth.js';
 
 
-const router = Router();
+const routerRazaJDB = Router();
 
-router.get('/raza',authMiddleware, getRazas);
-router.get('/raza/:id',authMiddleware, getRazaById);
-router.post('/raza',authMiddleware, createRaza);
-router.put('/raza/:id',authMiddleware, updateRaza);
-router.patch('/raza/:id',authMiddleware, patchRaza);
-router.delete('/raza/:id',authMiddleware, deleteRaza);
+routerRazaJDB.get('/raza',authMiddlewareJDB, getRazasJDB);
+routerRazaJDB.get('/raza/:id',authMiddlewareJDB, getRazaByIdJDB);
+routerRazaJDB.post('/raza',authMiddlewareJDB, createRazaJDB);
+routerRazaJDB.put('/raza/:id',authMiddlewareJDB, updateRazaJDB);
+routerRazaJDB.patch('/raza/:id',authMiddlewareJDB, patchRazaJDB);
+routerRazaJDB.delete('/raza/:id',authMiddlewareJDB, deleteRazaJDB);
 
-export default router;
+export default routerRazaJDB;

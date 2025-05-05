@@ -1,21 +1,21 @@
 import { Router } from 'express';
 import {
-  getCategorias,
-  getCategoriaById,
-  createCategoria,
-  updateCategoria,
-  patchCategoria,
-  deleteCategoria
+  getCategoriasJDB,
+  getCategoriaByIdJDB,
+  createCategoriaJDB,
+  updateCategoriaJDB,
+  patchCategoriaJDB,
+  deleteCategoriaJDB
 } from '../controllersJDB/JDBcategorias.controller.js';
-import { authMiddleware } from '../middleware/auth.js';
+import { authMiddlewareJDB } from '../middleware/auth.js';
 
-const router = Router();
+const routerCategoriaJDB = Router();
 
-router.get('/categorias',authMiddleware, getCategorias);
-router.get('/categorias/:id',authMiddleware, getCategoriaById);
-router.post('/categorias',authMiddleware, createCategoria);
-router.put('/categorias/:id',authMiddleware, updateCategoria);
-router.patch('/categorias/:id',authMiddleware, patchCategoria);
-router.delete('/categorias/:id',authMiddleware, deleteCategoria);
+routerCategoriaJDB.get('/categorias',authMiddlewareJDB, getCategoriasJDB);
+routerCategoriaJDB.get('/categorias/:id',authMiddlewareJDB, getCategoriaByIdJDB);
+routerCategoriaJDB.post('/categorias',authMiddlewareJDB, createCategoriaJDB);
+routerCategoriaJDB.put('/categorias/:id',authMiddlewareJDB, updateCategoriaJDB);
+routerCategoriaJDB.patch('/categorias/:id',authMiddlewareJDB, patchCategoriaJDB);
+routerCategoriaJDB.delete('/categorias/:id',authMiddlewareJDB, deleteCategoriaJDB);
 
-export default router;
+export default routerCategoriaJDB;

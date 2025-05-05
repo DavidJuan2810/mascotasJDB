@@ -2,7 +2,7 @@ import { PrismaClient } from '../../generated/prisma/client.js';
 const prisma = new PrismaClient;
 
 // Obtener todas las mascotas
-export const getMascotas = async (req, res) => {
+export const getMascotasJDB = async (req, res) => {
   try {
     const mascotas = await prisma.mascotas.findMany({
       include: {
@@ -20,7 +20,7 @@ export const getMascotas = async (req, res) => {
 };
 
 // Obtener una mascota por ID
-export const getMascotaById = async (req, res) => {
+export const getMascotaByIdJDB = async (req, res) => {
   const { id } = req.params;
   try {
     const mascota = await prisma.mascotas.findUnique({
@@ -41,7 +41,7 @@ export const getMascotaById = async (req, res) => {
 };
 
 // Crear una nueva mascota
-export const createMascota = async (req, res) => {
+export const createMascotaJDB = async (req, res) => {
   const { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId } = req.body;
   try {
     const nuevaMascota = await prisma.mascotas.create({
@@ -55,7 +55,7 @@ export const createMascota = async (req, res) => {
 };
 
 // Actualizar toda la mascota
-export const updateMascota = async (req, res) => {
+export const updateMascotaJDB = async (req, res) => {
   const { id } = req.params;
   const { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId } = req.body;
   try {
@@ -71,7 +71,7 @@ export const updateMascota = async (req, res) => {
 };
 
 // Actualizar parcialmente mascota
-export const patchMascota = async (req, res) => {
+export const patchMascotaJDB = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
   try {
@@ -87,7 +87,7 @@ export const patchMascota = async (req, res) => {
 };
 
 // Eliminar mascota
-export const deleteMascota = async (req, res) => {
+export const deleteMascotaJDB = async (req, res) => {
   const { id } = req.params;
   try {
     await prisma.mascotas.delete({

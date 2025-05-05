@@ -1,7 +1,7 @@
 import { PrismaClient } from '../../generated/prisma/client.js';  
 const prisma = new PrismaClient;
 
-export const getRazas = async (req, res) => {
+export const getRazasJDB = async (req, res) => {
   try {
     const razas = await prisma.raza.findMany({
       include: { mascota: true },
@@ -13,7 +13,7 @@ export const getRazas = async (req, res) => {
   }
 };
 
-export const getRazaById = async (req, res) => {
+export const getRazaByIdJDB = async (req, res) => {
   const { id } = req.params;
   try {
     const raza = await prisma.raza.findUnique({
@@ -28,7 +28,7 @@ export const getRazaById = async (req, res) => {
   }
 };
 
-export const createRaza = async (req, res) => {
+export const createRazaJDB = async (req, res) => {
   const { nombre } = req.body;
   try {
     const nuevaRaza = await prisma.raza.create({ data: { nombre } });
@@ -39,7 +39,7 @@ export const createRaza = async (req, res) => {
   }
 };
 
-export const updateRaza = async (req, res) => {
+export const updateRazaJDB = async (req, res) => {
   const { id } = req.params;
   const { nombre } = req.body;
   try {
@@ -54,7 +54,7 @@ export const updateRaza = async (req, res) => {
   }
 };
 
-export const patchRaza = async (req, res) => {
+export const patchRazaJDB = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
   try {
@@ -69,7 +69,7 @@ export const patchRaza = async (req, res) => {
   }
 };
 
-export const deleteRaza = async (req, res) => {
+export const deleteRazaJDB = async (req, res) => {
   const { id } = req.params;
   try {
     await prisma.raza.delete({

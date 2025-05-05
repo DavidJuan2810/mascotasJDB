@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
-const SECRET_KEY = process.env.JWT_SECRET || 'tu_clave_secreta'; // Usa una variable de entorno en producción
+const SECRET_KEY = process.env.JWT_SECRET || 'JDB10'; // Usa una variable de entorno en producción
 
 // Registrar un nuevo usuario
 export const register = async (req, res) => {

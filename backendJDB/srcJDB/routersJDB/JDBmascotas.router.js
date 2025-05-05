@@ -1,21 +1,21 @@
 import { Router } from 'express';
 import {
-  getMascotas,
-  getMascotaById,
-  createMascota,
-  updateMascota,
-  patchMascota,
-  deleteMascota
+  getMascotasJDB,
+  getMascotaByIdJDB,
+  createMascotaJDB,
+  updateMascotaJDB,
+  patchMascotaJDB,
+  deleteMascotaJDB
 } from '../controllersJDB/JDBmascotas.controller.js';
-import { authMiddleware } from '../middleware/auth.js';
+import { authMiddlewareJDB } from '../middleware/auth.js';
 
-const router = Router();
+const routerMascotasJDB = Router();
 
-router.get('/mascotas',authMiddleware, getMascotas);
-router.get('/mascotas/:id',authMiddleware, getMascotaById);
-router.post('/mascotas',authMiddleware, createMascota);
-router.put('/mascotas/:id',authMiddleware, updateMascota);
-router.patch('/mascotas/:id',authMiddleware, patchMascota);
-router.delete('/mascotas/:id',authMiddleware, deleteMascota);
+routerMascotasJDB.get('/mascotas',authMiddlewareJDB, getMascotasJDB);
+routerMascotasJDB.get('/mascotas/:id',authMiddlewareJDB, getMascotaByIdJDB);
+routerMascotasJDB.post('/mascotas',authMiddlewareJDB, createMascotaJDB);
+routerMascotasJDB.put('/mascotas/:id',authMiddlewareJDB, updateMascotaJDB);
+routerMascotasJDB.patch('/mascotas/:id',authMiddlewareJDB, patchMascotaJDB);
+routerMascotasJDB.delete('/mascotas/:id',authMiddlewareJDB, deleteMascotaJDB);
 
-export default router;
+export default routerMascotasJDB;

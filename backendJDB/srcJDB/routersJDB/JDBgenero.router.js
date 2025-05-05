@@ -1,22 +1,22 @@
 import { Router } from 'express';
 import {
-  getGeneros,
-  getGeneroById,
-  createGenero,
-  updateGenero,
-  patchGenero,
-  deleteGenero
+  getGenerosJDB,
+  getGeneroByIdJDB,
+  createGeneroJDB,
+  updateGeneroJDB,
+  patchGeneroJDB,
+  deleteGeneroJDB
 } from '../controllersJDB/JDBgenero.controller.js';
-import { authMiddleware } from '../middleware/auth.js';
+import { authMiddlewareJDB } from '../middleware/auth.js';
 
 
-const router = Router();
+const routerGeneroJDB = Router();
 
-router.get('/genero',authMiddleware, getGeneros);
-router.get('/genero/:id',authMiddleware, getGeneroById);
-router.post('/genero',authMiddleware, createGenero);
-router.put('/genero/:id',authMiddleware, updateGenero);
-router.patch('/genero/:id',authMiddleware, patchGenero);
-router.delete('/genero/:id',authMiddleware, deleteGenero);
+routerGeneroJDB.get('/genero',authMiddlewareJDB, getGenerosJDB);
+routerGeneroJDB.get('/genero/:id',authMiddlewareJDB, getGeneroByIdJDB);
+routerGeneroJDB.post('/genero',authMiddlewareJDB, createGeneroJDB);
+routerGeneroJDB.put('/genero/:id',authMiddlewareJDB, updateGeneroJDB);
+routerGeneroJDB.patch('/genero/:id',authMiddlewareJDB, patchGeneroJDB);
+routerGeneroJDB.delete('/genero/:id',authMiddlewareJDB, deleteGeneroJDB);
 
-export default router;
+export default routerGeneroJDB;

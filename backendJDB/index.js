@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import usuariosRoutes from './srcJDB/routersJDB/JDBusuarios.router.js';
-import mascotasRoutes from './srcJDB/routersJDB/JDBmascotas.router.js';
-import razaRoutes from './srcJDB/routersJDB/JDBraza.router.js';
-import generoRoutes from './srcJDB/routersJDB/JDBgenero.router.js';
-import categoriasRoutes from './srcJDB/routersJDB/JDBcategorias.router.js';
+import routerUsuarioJDB from './srcJDB/routersJDB/JDBusuarios.router.js';
+import routerMascotasJDB from './srcJDB/routersJDB/JDBmascotas.router.js';
+import routerRazaJDB from './srcJDB/routersJDB/JDBraza.router.js';
+import routerGeneroJDB from './srcJDB/routersJDB/JDBgenero.router.js';
+import routerCategoriaJDB from './srcJDB/routersJDB/JDBcategorias.router.js';
 import { PrismaClient } from './generated/prisma/client.js'; 
 import dotenv from 'dotenv'; 
 
@@ -25,11 +25,11 @@ app.use(express.json());
 app.use(express.static('../frontend')); // Sirve los archivos estáticos del frontend
 
 // Rutas
-app.use('/api', usuariosRoutes);
-app.use('/api', mascotasRoutes);
-app.use('/api', razaRoutes);
-app.use('/api', generoRoutes);
-app.use('/api', categoriasRoutes);
+app.use('/api', routerUsuarioJDB);
+app.use('/api', routerMascotasJDB);
+app.use('/api', routerRazaJDB);
+app.use('/api', routerGeneroJDB);
+app.use('/api', routerCategoriaJDB);
 
 // Test de conexión
 app.get('/', (req, res) => {
