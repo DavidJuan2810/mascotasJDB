@@ -34,8 +34,11 @@ export const getUsuarioById = async (req, res) => {
 export const createUsuario = async (req, res) => {
   const { nombre, email, password } = req.body;
   try {
+    // Encriptar la contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const nuevoUsuario = await prisma.usuarios.create({
-      data: { nombre, email, password },
+      data: { nombre, email, password: hashedPassword },
     });
     res.status(201).json(nuevoUsuario);
   } catch (error) {
@@ -49,9 +52,15 @@ export const updateUsuario = async (req, res) => {
   const { id } = req.params;
   const { nombre, email, password } = req.body;
   try {
+    // Si se proporciona una nueva contraseña, encriptarla
+    const data = { nombre, email };
+    if (password) {
+      data.password = await bcrypt.hash(password, 10);
+    }
+
     const usuarioActualizado = await prisma.usuarios.update({
       where: { id: parseInt(id) },
-      data: { nombre, email, password },
+      data,
     });
     res.status(200).json(usuarioActualizado);
   } catch (error) {
@@ -65,6 +74,11 @@ export const patchUsuario = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
   try {
+    // Si se actualiza la contraseña, encriptarla
+    if (data.password) {
+      data.password = await bcrypt.hash(data.password, 10);
+    }
+
     const usuarioActualizado = await prisma.usuarios.update({
       where: { id: parseInt(id) },
       data,
@@ -75,7 +89,6 @@ export const patchUsuario = async (req, res) => {
     res.status(500).json({ error: 'Error al hacer patch a usuario' });
   }
 };
-
 // Eliminar un usuario
 export const deleteUsuario = async (req, res) => {
   const { id } = req.params;

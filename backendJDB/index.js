@@ -5,16 +5,24 @@ import mascotasRoutes from './srcJDB/routersJDB/JDBmascotas.router.js';
 import razaRoutes from './srcJDB/routersJDB/JDBraza.router.js';
 import generoRoutes from './srcJDB/routersJDB/JDBgenero.router.js';
 import categoriasRoutes from './srcJDB/routersJDB/JDBcategorias.router.js';
-import { PrismaClient } from './generated/prisma/client.js';  
+import { PrismaClient } from './generated/prisma/client.js'; 
+import dotenv from 'dotenv'; 
+
+dotenv.config();
 
 const prisma = new PrismaClient();
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5500', // Puerto donde se ejecuta el frontend
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.use(express.json());
+app.use(express.static('../frontend')); // Sirve los archivos estáticos del frontend
 
 // Rutas
 app.use('/api', usuariosRoutes);
