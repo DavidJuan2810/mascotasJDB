@@ -5,105 +5,94 @@
   box-sizing: border-box;
 }
 
-/* Estilos para el contenedor principal con grid */
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+body {
+  font-family: Arial, sans-serif;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3b4499;
 }
 
-.static {
-  position: fixed;
-  bottom: 2%;
+/* Contenedor principal */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen de fondo */
+.bg-img {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+  z-index: 0;
+  border-radius: 15px;
+}
+
+/* Contenedor del formulario */
+.form-column {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #VistaLogin {
-  border-radius: 20px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
-  max-width: 900px;
+  max-width: 300px;
   text-align: center;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
 }
 
-#loginView form input {
-  padding: 12px 70px; /* horizontalmente */
-  border: none;
-  border-radius: 40px;
-  font-size: 16px;
-  outline: none;
-  background: rgba(255, 255, 255, 0.178); 
-  color: #333;
-  backdrop-filter: blur(4px);
-  -webkit-border-radius: 40px;
-  -moz-border-radius: 40px;
-  -ms-border-radius: 40px;
-  -o-border-radius: 40px;
-}
-
-.img_static{
-  position: fixed;
-  top: -0%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 380px;
-  height: auto;
-  object-fit: contain;
-  z-index: 0; /*para la imagen*/;
-  display: block; /* Mostrar por defecto */
-}
 
 /* Estilos para los inputs */
-.input-group {
-  margin-bottom: 15px;
-}
-
-input {
+.input-group input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.318);
+  color: #333;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para el botón */
 button {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  padding: 12px;
+  background-color:rgb(36, 46, 107);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
-}
-
-/* Estilos para el texto de registro */
-.register-text {
-  margin-top: 15px;
-  font-size: 14px;
-}
-
-.register-text a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.register-text a:hover {
-  text-decoration: underline;
+  background-color: #152c6e;
 }
 
 /* Estilos para el mensaje de error */
@@ -116,12 +105,18 @@ button:hover {
 /* Responsividad */
 @media (max-width: 768px) {
   .container {
-    grid-template-columns: 1fr;
+    max-width: 100%;
   }
-  .image-column {
-    min-height: 300px;
+
+  .bg-img {
+    max-width: 100%;
   }
+
   .form-column {
-    padding: 20px 0;
+    padding: 10px;
+  }
+
+  #VistaLogin {
+    max-width: 250px;
   }
 }

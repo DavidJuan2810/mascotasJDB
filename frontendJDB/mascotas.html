@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrar Mascotas</title>
+  <link rel="stylesheet" href="./css/mascotas.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span>Administrar Mascotas</span>
+      <button class="close-btn"><img src="./assets/btn-close.svg" alt=""></button>
+    </div>
+
+    <button class="add-btn">＋ Adicionar</button>
+
+    <div class="mascota-list">
+      <!-- Repite este bloque para cada mascota -->
+      <div class="mascota-item">
+        <img class="avatar" src="./assets/photo-lg-1.svg" alt="karsten">
+        <div class="info">
+          <span class="nombre">karsten</span>
+          <span class="raza">Bulldog</span>
+        </div>
+        <div class="actions">
+          <button class="action-btn"> <img src="./assets/btn-show.svg" alt="lupa"></button>
+          <button class="action-btn">✏️</button>
+          <button class="delete-btn">🗑️</button>
+        </div>
+      </div>
+
+      <!-- Puedes duplicar este bloque para Alban, Reigner, etc. -->
+    </div>
+  </div>
+</body>
+</html>
