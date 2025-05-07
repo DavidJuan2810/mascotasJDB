@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adicionar Mascota</title>
+  <link rel="stylesheet" href="./css/crear.css" />
 </head>
 <body>
-    crear mascotas
+  <div class="container">
+    <div class="header">
+      <span class="back">&larr;</span>
+      <h2>Adicionar Mascota</h2>
+      <span class="close">&times;</span>
+    </div>
+
+    <form id="form-mascota" enctype="multipart/form-data">
+      <div class="img-container">
+        <label for="foto">
+          <img src="assets/img/camera-icon.png" alt="Subir foto" class="camera-icon" />
+        </label>
+        <input type="file" id="foto" name="foto" accept="image/*" hidden required />
+      </div>
+
+      <input type="text" name="nombre" placeholder="Nombre" required />
+
+      <select id="raza-select" name="razaId" required>
+        <option value="">Seleccione Raza..</option>
+      </select>
+
+      <select id="categoria-select" name="categoriaId" required>
+        <option value="">Seleccione Categoría..</option>
+      </select>
+
+      <select id="genero-select" name="generoId" required>
+        <option value="">Seleccione Género..</option>
+      </select>
+
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+
+  <script src="assets/js/crear.js"></script>
 </body>
 </html>

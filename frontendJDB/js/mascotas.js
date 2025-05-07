@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const nuevaMascota = { nombre, raza, imagen };
           mascotas.push(nuevaMascota);
           guardarMascotas();
-          window.location.href = 'index.html'; // Redirigir a la lista
+          window.location.href = 'mascotas.html'; // Redirigir a la lista
         };
         reader.readAsDataURL(imagenInput.files[0]);
       } else {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nuevaMascota = { nombre, raza, imagen };
         mascotas.push(nuevaMascota);
         guardarMascotas();
-        window.location.href = 'index.html';
+        window.location.href = 'mascotas.html';
       }
     });
   }
