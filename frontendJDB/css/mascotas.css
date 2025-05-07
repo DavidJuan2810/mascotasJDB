@@ -1,105 +1,80 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #e6ecf1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container {
-    background-color: #2f4a7d;
-    border-radius: 20px;
-    padding: 20px;
-    width: 320px;
-    color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
-  
-  .header {
-    justify-content: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .add-btn {
-    width: 100%;
-    background-color: #5dc186;
-    border: none;
-    border-radius: 30px;
-    padding: 10px;
-    font-size: 16px;
-    color: white;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  
-  .mascota-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .mascota-item {
-    background-color: #d6dfe7;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    color: black;
-  }
-  
-  .avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .info {
-    flex-grow: 1;
-    margin-left: 10px;
-  }
-  
-  .nombre {
-    font-weight: bold;
-    display: block;
-  }
-  
-  .raza {
-    font-size: 12px;
-    color: #666;
-  }
-  
-  .actions {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .action-btn,
-  .delete-btn {
-    background-color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 5px 7px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .delete-btn {
-    background-color: #f46c6c;
-    color: white;
-  }
-  
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mascota-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mascota-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.info {
+  flex-grow: 1;
+}
+
+.nombre {
+  font-weight: bold;
+  display: block;
+}
+
+.raza {
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn, .delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+form button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
