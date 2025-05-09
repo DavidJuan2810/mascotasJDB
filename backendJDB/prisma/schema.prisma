@@ -29,7 +29,7 @@ model Usuarios {
 model Mascotas{
   id Int @id @default(autoincrement())
   nombre String
-  foto String
+  foto String @db.Text
   estado estado
   usuarioId Int
   razaId Int

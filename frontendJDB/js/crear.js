@@ -7,22 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.close');
   const backBtn = document.querySelector('.back');
 
-  // URL base de tu API
-  const API_URL = 'http://localhost:3000/api'; // Incluimos el prefijo /api
+  const API_URL = 'http://localhost:3000/api';
 
-  // Verificar si hay token
+  // ✅ Obtener el token desde localStorage
+  const token = localStorage.getItem('token');
+
   if (!token) {
     alert('No estás autenticado. Por favor, inicia sesión.');
-    window.location.href = 'login.html'; // Redirige a la página de login si no hay token
+    window.location.href = 'login.html';
     return;
   }
 
-  // Cargar opciones de los select
   const loadSelectOptions = async () => {
     try {
-      // Cargar categorías
       const categoriasResponse = await fetch(`${API_URL}/categorias`, {
-        headers: { 
+        headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
@@ -38,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         categoriaSelect.appendChild(option);
       });
 
-      // Cargar razas
       const razasResponse = await fetch(`${API_URL}/raza`, {
         headers: { 
           'Authorization': `Bearer ${token}`,
@@ -56,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         razaSelect.appendChild(option);
       });
 
-      // Cargar géneros
       const generosResponse = await fetch(`${API_URL}/genero`, {
         headers: { 
           'Authorization': `Bearer ${token}`,
@@ -79,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Manejar el envío del formulario
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -106,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
       nombre,
       foto,
       estado: 'disponible',
-      usuarioId:  // Ajusta según el usuario autenticado
+      usuarioId: 1, // ⚠️ Ajusta este ID al del usuario autenticado
       razaId,
       categoriaId,
       generoId,
@@ -125,14 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) {
         throw new Error(`Error al crear mascota: ${response.statusText}`);
       }
-      window.location.href = 'mascotas.html'; // Redirigir a la lista de mascotas
+
+      window.location.href = 'mascotas.html';
     } catch (error) {
       console.error('Error al crear mascota:', error.message);
       alert('No se pudo crear la mascota: ' + error.message);
     }
   });
 
-  // Cerrar o volver atrás
   closeBtn.addEventListener('click', () => {
     window.location.href = 'mascotas.html';
   });
@@ -141,6 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'mascotas.html';
   });
 
-  // Cargar las opciones al iniciar
+  // ✅ Cargar select al cargar la página
   loadSelectOptions();
 });

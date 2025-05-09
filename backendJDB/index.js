@@ -1,12 +1,13 @@
 import express from 'express';
 import cors from 'cors';
+import bodyParser from 'body-parser'; // Asegúrate de tener esta línea
 import routerUsuarioJDB from './srcJDB/routersJDB/JDBusuarios.router.js';
 import routerMascotasJDB from './srcJDB/routersJDB/JDBmascotas.router.js';
 import routerRazaJDB from './srcJDB/routersJDB/JDBraza.router.js';
 import routerGeneroJDB from './srcJDB/routersJDB/JDBgenero.router.js';
 import routerCategoriaJDB from './srcJDB/routersJDB/JDBcategorias.router.js';
-import { PrismaClient } from './generated/prisma/client.js'; 
-import dotenv from 'dotenv'; 
+import { PrismaClient } from './generated/prisma/client.js';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -15,8 +16,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middlewares
+app.use(bodyParser.json({ limit: '50mb' })); // Aumentar el límite a 50mb
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+
 app.use(cors({
-  origin:  ['http://127.0.0.1:5500', 'http://localhost:5500'], // Puerto donde se ejecuta el frontend
+  origin: ['http://127.0.0.1:5500', 'http://localhost:5500'], // Puerto donde se ejecuta el frontend
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));

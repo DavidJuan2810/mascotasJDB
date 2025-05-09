@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.close-btn');
 
   // URL base de tu API (ajusta según tu configuración)
-  const API_URL = 'http://localhost:3000'; // Cambia esto según la URL de tu backend
+  const API_URL = 'http://localhost:3000/api'; // Cambia esto según la URL de tu backend
 
   // Obtener el token de autenticación (asumo que está en localStorage)
-  const token = localStorage.getItem('authToken'); // Ajusta según cómo manejes el token
+  const token = localStorage.getItem('Token'); // Ajusta según cómo manejes el token
 
   // Cargar mascotas desde el backend
   const loadMascotas = async () => {
