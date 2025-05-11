@@ -1,4 +1,5 @@
-import { PrismaClient } from '../../generated/prisma/client.js';  
+import { PrismaClient } from '../../generated/prisma/client.js'; 
+import bcrypt from 'bcrypt';
 const prisma = new PrismaClient;
 
 // Obtener todos los usuarios

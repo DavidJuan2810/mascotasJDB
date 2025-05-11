@@ -4,13 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const razaSelect = document.getElementById('raza-select');
   const categoriaSelect = document.getElementById('categoria-select');
   const generoSelect = document.getElementById('genero-select');
+  const usuarioSelect = document.getElementById('usuario-select');
   const closeBtn = document.querySelector('.close');
   const backBtn = document.querySelector('.back');
 
   const API_URL = 'http://localhost:3000/api';
+  const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB en bytes
 
-  // ✅ Obtener el token desde localStorage
+  // Obtener el token desde localStorage
   const token = localStorage.getItem('token');
+  console.log('Token obtenido:', token);
 
   if (!token) {
     alert('No estás autenticado. Por favor, inicia sesión.');
@@ -20,6 +23,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const loadSelectOptions = async () => {
     try {
+      // Cargar usuarios
+      console.log('Intentando cargar usuarios desde /api/usuariojdb...');
+      const usuariosResponse = await fetch(`${API_URL}/usuariojdb`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('Respuesta de usuarios:', usuariosResponse.status, usuariosResponse.statusText);
+      if (!usuariosResponse.ok) {
+        const errorText = await usuariosResponse.text();
+        throw new Error(`Error al cargar usuarios: ${usuariosResponse.status} ${errorText}`);
+      }
+      const usuarios = await usuariosResponse.json();
+      console.log('Usuarios obtenidos:', usuarios);
+      usuarioSelect.innerHTML = '<option value="">Seleccione Usuario..</option>';
+      usuarios.forEach(usuario => {
+        const option = document.createElement('option');
+        option.value = usuario.id;
+        option.textContent = usuario.nombre;
+        usuarioSelect.appendChild(option);
+      });
+
+      // Cargar categorías
+      console.log('Cargando categorías...');
       const categoriasResponse = await fetch(`${API_URL}/categorias`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -37,8 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
         categoriaSelect.appendChild(option);
       });
 
+      // Cargar razas
+      console.log('Cargando razas...');
       const razasResponse = await fetch(`${API_URL}/raza`, {
-        headers: { 
+        headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
@@ -54,8 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
         razaSelect.appendChild(option);
       });
 
+      // Cargar géneros
+      console.log('Cargando géneros...');
       const generosResponse = await fetch(`${API_URL}/genero`, {
-        headers: { 
+        headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
@@ -81,10 +113,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new FormData(form);
     const nombre = formData.get('nombre');
+    const usuarioId = parseInt(formData.get('usuarioId'));
     const razaId = parseInt(formData.get('razaId'));
     const categoriaId = parseInt(formData.get('categoriaId'));
     const generoId = parseInt(formData.get('generoId'));
     const fotoFile = fotoInput.files[0];
+
+    // Validar tamaño de la imagen
+    if (fotoFile && fotoFile.size > MAX_FILE_SIZE) {
+      alert('La imagen es demasiado grande. El tamaño máximo es 2MB.');
+      return;
+    }
 
     let foto = '';
     if (fotoFile) {
@@ -102,11 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
       nombre,
       foto,
       estado: 'disponible',
-      usuarioId: 1, // ⚠️ Ajusta este ID al del usuario autenticado
+      usuarioId,
       razaId,
       categoriaId,
       generoId,
     };
+
+    console.log('Datos enviados a /api/mascotas:', JSON.stringify(mascotaData, null, 2));
 
     try {
       const response = await fetch(`${API_URL}/mascotas`, {
@@ -118,9 +159,16 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(mascotaData),
       });
 
+      console.log('Respuesta de /api/mascotas:', response.status, response.statusText);
+
       if (!response.ok) {
-        throw new Error(`Error al crear mascota: ${response.statusText}`);
+        const errorText = await response.text();
+        console.error('Error en la respuesta de /api/mascotas:', errorText);
+        throw new Error(`Error al crear mascota: ${response.status} ${errorText}`);
       }
+
+      const responseData = await response.json();
+      console.log('Mascota creada:', responseData);
 
       window.location.href = 'mascotas.html';
     } catch (error) {
@@ -137,6 +185,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'mascotas.html';
   });
 
-  // ✅ Cargar select al cargar la página
   loadSelectOptions();
 });

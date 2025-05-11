@@ -1,4 +1,4 @@
-import { PrismaClient } from '../../generated/prisma/client.js';  
+import { PrismaClient } from '../../generated/prisma/client.js';
 const prisma = new PrismaClient;
 
 // Obtener todas las mascotas
@@ -43,14 +43,17 @@ export const getMascotaByIdJDB = async (req, res) => {
 // Crear una nueva mascota
 export const createMascotaJDB = async (req, res) => {
   const { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId } = req.body;
+  console.log('Datos recibidos en /api/mascotas:', { nombre, foto: foto ? `${foto.slice(0, 50)}... (length: ${foto.length})` : 'sin foto', estado, usuarioId, razaId, categoriaId, generoId });
+
   try {
     const nuevaMascota = await prisma.mascotas.create({
       data: { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId },
     });
+    console.log('Mascota creada:', nuevaMascota);
     res.status(201).json(nuevaMascota);
   } catch (error) {
     console.error('Error al crear mascota:', error);
-    res.status(500).json({ error: 'Error al crear mascota' });
+    res.status(500).json({ error: 'Error al crear mascota', details: error.message });
   }
 };
 

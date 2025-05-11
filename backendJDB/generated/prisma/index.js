@@ -176,7 +176,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Adminsena\\Desktop\\mascotasJDB\\backendJDB\\generated\\prisma",
+      "value": "C:\\Users\\HOGAR\\Desktop\\works2025\\mascotasJDB\\backendJDB\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -190,7 +190,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Adminsena\\Desktop\\mascotasJDB\\backendJDB\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\HOGAR\\Desktop\\works2025\\mascotasJDB\\backendJDB\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

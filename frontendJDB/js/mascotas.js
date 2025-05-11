@@ -2,11 +2,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const mascotaList = document.getElementById('mascota-list');
   const closeBtn = document.querySelector('.close-btn');
 
-  // URL base de tu API (ajusta según tu configuración)
-  const API_URL = 'http://localhost:3000/api'; // Cambia esto según la URL de tu backend
+  // Verificar si mascotaList existe
+  if (!mascotaList) {
+    console.error('Error: No se encontró el elemento con id="mascota-list" en mascotas.html');
+    return;
+  }
 
-  // Obtener el token de autenticación (asumo que está en localStorage)
-  const token = localStorage.getItem('Token'); // Ajusta según cómo manejes el token
+  // URL base de tu API
+  const API_URL = 'http://localhost:3000/api';
+
+  // Obtener el token de autenticación (coherente con crear.js)
+  const token = localStorage.getItem('token'); // Cambiado de 'Token' a 'token'
+
+  // Verificar si hay token
+  if (!token) {
+    console.error('No se encontró el token de autenticación');
+    alert('No estás autenticado. Por favor, inicia sesión.');
+    window.location.href = 'login.html';
+    return;
+  }
 
   // Cargar mascotas desde el backend
   const loadMascotas = async () => {
@@ -77,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Cerrar la ventana
   closeBtn.addEventListener('click', () => {
-    window.location.href = 'index.html'; // O la página principal que desees
+    window.location.href = 'index.html';
   });
 
   // Cargar las mascotas al iniciar

@@ -26,7 +26,7 @@ model Usuarios {
   mascotas Mascotas[]
 }
 
-model Mascotas{
+model Mascotas {
   id Int @id @default(autoincrement())
   nombre String
   foto String @db.Text
@@ -40,7 +40,6 @@ model Mascotas{
   categoria Categorias @relation(fields: [categoriaId], references: [id])
   genero Genero @relation(fields: [generoId], references: [id])
 }
-
 model Raza {
   id Int @id @default(autoincrement())
   nombre String

@@ -9,20 +9,24 @@
 <body>
   <div class="container">
     <div class="header">
-      <span class="back">&larr;</span>
+      <span class="back">←</span>
       <h2>Adicionar Mascota</h2>
-      <span class="close">&times;</span>
+      <span class="close">×</span>
     </div>
 
     <form id="form-mascota" enctype="multipart/form-data">
       <div class="img-container">
         <label for="foto">
-          <img src="assets/img/camera-icon.png" alt="Subir foto" class="camera-icon" />
+          <img src="" alt="Subir foto" class="camera-icon" />
         </label>
         <input type="file" id="foto" name="foto" accept="image/*" hidden required />
       </div>
 
       <input type="text" name="nombre" placeholder="Nombre" required />
+
+      <select id="usuario-select" name="usuarioId" required>
+        <option value="">Seleccione Usuario..</option>
+      </select>
 
       <select id="raza-select" name="razaId" required>
         <option value="">Seleccione Raza..</option>
