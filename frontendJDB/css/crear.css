@@ -1,90 +1,106 @@
 body {
-    margin: 0;
-    background-color: #1e3661;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .card {
-    background-color: #1e3661;
-    border-radius: 30px;
-    padding: 20px;
-    width: 320px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    color: white;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  .camera-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  
-  .camera-icon {
-    width: 80px;
-    height: 80px;
-    background-color: #fff;
-    border-radius: 50%;
-    padding: 10px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  input[type="text"],
-  select {
-    border: none;
-    border-radius: 20px;
-    padding: 12px;
-    font-size: 14px;
-    background-color: #a3b1c6;
-    color: #1e3661;
-    outline: none;
-  }
-  
-  input[type="file"] {
-    display: none;
-  }
-  
-  .file-input label {
-    background-color: #a3b1c6;
-    color: #1e3661;
-    border-radius: 20px;
-    padding: 12px;
-    text-align: center;
-    cursor: pointer;
-    display: block;
-    font-size: 14px;
-  }
-  
-  button {
-    background: linear-gradient(to right, #3ed28c, #41d97e);
-    border: none;
-    padding: 12px;
-    border-radius: 20px;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 5px;
-  }
-  
-  button:hover {
-    opacity: 0.9;
-  }
-  
+  margin: 0;
+  background-color: #1a2a44;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #2C4372;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #dcdeead7;
+  margin-bottom: 20px;
+}
+
+.header .close, .header .back {
+  font-size: 20px;
+  color: #bdc3c7;
+  cursor: pointer;
+}
+
+.header .close:hover, .header .back:hover {
+  color: #fff;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.camera-icon {
+  width: 80px;
+  height: 80px;
+  background-color: #34495e;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.campo-formulario {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #828e9cd4;
+  color: #242d65d8;
+  font-size: 14px;
+  outline: none;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #828e9cd4;
+  color: #242d65d8;
+  font-size: 14px;
+  outline: none;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+button:hover {
+  background-color: #27ae60;
+}

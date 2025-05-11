@@ -42,12 +42,14 @@ export const getMascotaByIdJDB = async (req, res) => {
 
 // Crear una nueva mascota
 export const createMascotaJDB = async (req, res) => {
-  const { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId } = req.body;
-  console.log('Datos recibidos en /api/mascotas:', { nombre, foto: foto ? `${foto.slice(0, 50)}... (length: ${foto.length})` : 'sin foto', estado, usuarioId, razaId, categoriaId, generoId });
+  const { nombre, estado, usuarioId, razaId, categoriaId, generoId } = req.body;
+  const foto = req.file ? req.file.filename : null; // Usa solo el nombre del archivo
+
+  console.log('Datos recibidos en /api/mascotas:', { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId });
 
   try {
     const nuevaMascota = await prisma.mascotas.create({
-      data: { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId },
+      data: { nombre, foto, estado, usuarioId: parseInt(usuarioId), razaId: parseInt(razaId), categoriaId: parseInt(categoriaId), generoId: parseInt(generoId) },
     });
     console.log('Mascota creada:', nuevaMascota);
     res.status(201).json(nuevaMascota);

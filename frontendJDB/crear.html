@@ -9,41 +9,39 @@
 <body>
   <div class="container">
     <div class="header">
-      <span class="back">←</span>
+      <span class="back"> <img src="./assets/btn-back.svg" alt="back"></span>
       <h2>Adicionar Mascota</h2>
-      <span class="close">×</span>
+      <span class="close"><img src="./assets/btn-close.svg" alt="close"></span>
     </div>
-
     <form id="form-mascota" enctype="multipart/form-data">
       <div class="img-container">
         <label for="foto">
-          <img src="" alt="Subir foto" class="camera-icon" />
+          <img src="./assets/photo-lg-0.svg" alt="icon-camera">
         </label>
         <input type="file" id="foto" name="foto" accept="image/*" hidden required />
       </div>
-
-      <input type="text" name="nombre" placeholder="Nombre" required />
-
+      
+      <input type="text" name="nombre" placeholder="Nombre" class="campo-formulario" required />
       <select id="usuario-select" name="usuarioId" required>
         <option value="">Seleccione Usuario..</option>
       </select>
-
-      <select id="raza-select" name="razaId" required>
+      <select id="raza-select" name="razaId"  required>
         <option value="">Seleccione Raza..</option>
       </select>
-
       <select id="categoria-select" name="categoriaId" required>
         <option value="">Seleccione Categoría..</option>
       </select>
-
       <select id="genero-select" name="generoId" required>
         <option value="">Seleccione Género..</option>
       </select>
-
+      <select id="estado-select" name="estado" required>
+        <option value="">Seleccione Estado..</option>
+        <option value="disponible">Disponible</option>
+        <option value="adoptado">Adoptado</option>
+      </select>
       <button type="submit">Guardar</button>
     </form>
   </div>
-
   <script src="./js/crear.js"></script>
 </body>
 </html>

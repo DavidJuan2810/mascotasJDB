@@ -10,10 +10,20 @@ import {
 import { authMiddlewareJDB } from '../middleware/auth.js';
 
 const routerMascotasJDB = Router();
+import multer from 'multer';
 
+const storage = multer.diskStorage({
+  destination: './public/img',
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+routerMascotasJDB.post('/mascotas', authMiddlewareJDB, upload.single('foto'), createMascotaJDB);
 routerMascotasJDB.get('/mascotas',authMiddlewareJDB, getMascotasJDB);
 routerMascotasJDB.get('/mascotas/:id',authMiddlewareJDB, getMascotaByIdJDB);
-routerMascotasJDB.post('/mascotas',authMiddlewareJDB, createMascotaJDB);
 routerMascotasJDB.put('/mascotas/:id',authMiddlewareJDB, updateMascotaJDB);
 routerMascotasJDB.patch('/mascotas/:id',authMiddlewareJDB, patchMascotaJDB);
 routerMascotasJDB.delete('/mascotas/:id',authMiddlewareJDB, deleteMascotaJDB);
