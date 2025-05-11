@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modificar Mascota</title>
+  <link rel="stylesheet" href="./css/editar.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="back"><img src="./assets/btn-back.svg" alt="Volver"></span>
+      <h2>Modificar Mascota</h2>
+      <span class="close"><img src="./assets/btn-close.svg" alt="Cerrar"></span>
+    </div>
+    <form id="form-mascota" enctype="multipart/form-data">
+      <div class="img-container">
+        <img id="foto-preview" src="./assets/photo-lg-0.svg" alt="Foto de la mascota" class="camera-icon" />
+        <input type="file" id="foto" name="foto" accept="image/*" hidden />
+      </div>
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="campo-formulario" required />
+      <select id="raza-select" name="razaId" required>
+        <option value="">Seleccione Raza..</option>
+      </select>
+      <select id="categoria-select" name="categoriaId" required>
+        <option value="">Seleccione Categoría..</option>
+      </select>
+      <select id="genero-select" name="generoId" required>
+        <option value="">Seleccione Género..</option>
+      </select>
+      <select id="estado-select" name="estado" required>
+        <option value="">Seleccione Estado..</option>
+        <option value="disponible">Disponible</option>
+        <option value="adoptado">Adoptado</option>
+      </select>
+      <button type="submit">Modificar</button>
+    </form>
+  </div>
+  <script src="./js/editar.js"></script>
+</body>
+</html>

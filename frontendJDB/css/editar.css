@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  background-color: #1a2a44;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Comienza desde arriba */
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #2C4372; /* Fondo más oscuro como en la imagen */
+  padding: 40px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  min-height: 100vh; /* Mantiene el contenedor estático y alargado */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #dcdeead7;
+  margin-bottom: 20px;
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+}
+
+.header .back, .header .close {
+  font-size: 20px;
+  color: #bdc3c7;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.header .back:hover, .header .close:hover {
+  color: #fff;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 1px; /* Más espacio debajo de la imagen */
+  margin-top: 1px; /* Mueve la imagen un poco más abajo */
+  position: relative;
+}
+
+#foto-preview {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  background-color: #496683;
+  padding: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  margin-top: 40px; /* Mueve el formulario más abajo */
+}
+
+.campo-formulario {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #828e9cd4; /* Gris claro como en la imagen */
+  color: #242d65d8;
+  font-size: 14px;
+  outline: none;
+  text-align: left; /* Alineación del texto */
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #828e9cd4; /* Gris claro */
+  color: #242d65d8;
+  font-size: 14px;
+  outline: none;
+  appearance: none; /* Quitar flecha en selects */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M6 8L2 4h8L6 8z" fill="%23422d65d8"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71; /* Verde como en la imagen */
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px; /* Espacio antes del botón */
+}
+
+button:hover {
+  background-color: #27ae60;
+}
+
+.img-container label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.img-container label img {
+  width: 30px;
+  height: 30px;
+}

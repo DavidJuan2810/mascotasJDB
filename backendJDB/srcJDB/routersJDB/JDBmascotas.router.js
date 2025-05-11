@@ -24,7 +24,7 @@ const upload = multer({ storage: storage });
 routerMascotasJDB.post('/mascotas', authMiddlewareJDB, upload.single('foto'), createMascotaJDB);
 routerMascotasJDB.get('/mascotas',authMiddlewareJDB, getMascotasJDB);
 routerMascotasJDB.get('/mascotas/:id',authMiddlewareJDB, getMascotaByIdJDB);
-routerMascotasJDB.put('/mascotas/:id',authMiddlewareJDB, updateMascotaJDB);
+routerMascotasJDB.put('/mascotas/:id',authMiddlewareJDB, upload.single('foto'), updateMascotaJDB);
 routerMascotasJDB.patch('/mascotas/:id',authMiddlewareJDB, patchMascotaJDB);
 routerMascotasJDB.delete('/mascotas/:id',authMiddlewareJDB, deleteMascotaJDB);
 
