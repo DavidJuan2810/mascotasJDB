@@ -9,9 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.close');
   const backBtn = document.querySelector('.back');
   const API_URL = 'http://localhost:3000/api';
-  const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB en bytes
+  const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
-  // Obtener token desde localStorage
   const token = localStorage.getItem('token');
   if (!token) {
     alert('No estás autenticado. Por favor, inicia sesión.');
@@ -23,16 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const [usuarios, razas, categorias, generos] = await Promise.all([
         fetch(`${API_URL}/usuariojdb`, {
-          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          headers: { 'Authorization': `Bearer ${token}` },
         }).then(res => res.json()),
         fetch(`${API_URL}/raza`, {
-          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          headers: { 'Authorization': `Bearer ${token}` },
         }).then(res => res.json()),
         fetch(`${API_URL}/categorias`, {
-          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          headers: { 'Authorization': `Bearer ${token}` },
         }).then(res => res.json()),
         fetch(`${API_URL}/genero`, {
-          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          headers: { 'Authorization': `Bearer ${token}` },
         }).then(res => res.json())
       ]);
 
@@ -82,10 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoriaId = parseInt(form.categoriaId.value);
     const generoId = parseInt(form.generoId.value);
     const estado = form.estado.value;
+    const latitud = parseFloat(form.latitud.value);
+    const longitud = parseFloat(form.longitud.value);
     const fotoFile = fotoInput.files[0];
 
-    // Validación
-    if (!nombre || !usuarioId || !razaId || !categoriaId || !generoId || !estado) {
+    if (!nombre || !usuarioId || !razaId || !categoriaId || !generoId || !estado || isNaN(latitud) || isNaN(longitud)) {
       alert('Por favor, complete todos los campos.');
       return;
     }
@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Usar FormData para enviar los datos como multipart/form-data
     const formData = new FormData();
     formData.append('nombre', nombre);
     formData.append('estado', estado);
@@ -102,6 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('razaId', razaId);
     formData.append('categoriaId', categoriaId);
     formData.append('generoId', generoId);
+    formData.append('latitud', latitud);
+    formData.append('longitud', longitud);
     if (fotoFile) {
       formData.append('foto', fotoFile);
     }
@@ -113,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
       razaId,
       categoriaId,
       generoId,
+      latitud,
+      longitud,
       foto: fotoFile ? fotoFile.name : 'sin foto',
     });
 
@@ -122,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
-        body: formData, // Enviar como FormData
+        body: formData,
       });
 
       if (!response.ok) {
@@ -140,13 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  closeBtn.addEventListener('click', () => {
-    window.location.href = 'mascotas.html';
-  });
-
-  backBtn.addEventListener('click', () => {
-    window.location.href = 'mascotas.html';
-  });
+  closeBtn.addEventListener('click', () => window.location.href = 'mascotas.html');
+  backBtn.addEventListener('click', () => window.location.href = 'mascotas.html');
 
   loadSelectOptions();
 });

@@ -36,6 +36,8 @@ model Mascotas {
   razaId      Int
   categoriaId Int
   generoId    Int
+  latitud     Float? // <- Este campo debe existir
+  longitud    Float?
   usuario     Usuarios   @relation(fields: [usuarioId], references: [id])
   raza        Raza       @relation(fields: [razaId], references: [id])
   categoria   Categorias @relation(fields: [categoriaId], references: [id])

@@ -2329,6 +2329,8 @@ export namespace Prisma {
     razaId: number | null
     categoriaId: number | null
     generoId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type MascotasSumAggregateOutputType = {
@@ -2337,6 +2339,8 @@ export namespace Prisma {
     razaId: number | null
     categoriaId: number | null
     generoId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type MascotasMinAggregateOutputType = {
@@ -2348,6 +2352,8 @@ export namespace Prisma {
     razaId: number | null
     categoriaId: number | null
     generoId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type MascotasMaxAggregateOutputType = {
@@ -2359,6 +2365,8 @@ export namespace Prisma {
     razaId: number | null
     categoriaId: number | null
     generoId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type MascotasCountAggregateOutputType = {
@@ -2370,6 +2378,8 @@ export namespace Prisma {
     razaId: number
     categoriaId: number
     generoId: number
+    latitud: number
+    longitud: number
     _all: number
   }
 
@@ -2380,6 +2390,8 @@ export namespace Prisma {
     razaId?: true
     categoriaId?: true
     generoId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type MascotasSumAggregateInputType = {
@@ -2388,6 +2400,8 @@ export namespace Prisma {
     razaId?: true
     categoriaId?: true
     generoId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type MascotasMinAggregateInputType = {
@@ -2399,6 +2413,8 @@ export namespace Prisma {
     razaId?: true
     categoriaId?: true
     generoId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type MascotasMaxAggregateInputType = {
@@ -2410,6 +2426,8 @@ export namespace Prisma {
     razaId?: true
     categoriaId?: true
     generoId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type MascotasCountAggregateInputType = {
@@ -2421,6 +2439,8 @@ export namespace Prisma {
     razaId?: true
     categoriaId?: true
     generoId?: true
+    latitud?: true
+    longitud?: true
     _all?: true
   }
 
@@ -2519,6 +2539,8 @@ export namespace Prisma {
     razaId: number
     categoriaId: number
     generoId: number
+    latitud: number | null
+    longitud: number | null
     _count: MascotasCountAggregateOutputType | null
     _avg: MascotasAvgAggregateOutputType | null
     _sum: MascotasSumAggregateOutputType | null
@@ -2549,6 +2571,8 @@ export namespace Prisma {
     razaId?: boolean
     categoriaId?: boolean
     generoId?: boolean
+    latitud?: boolean
+    longitud?: boolean
     usuario?: boolean | UsuariosDefaultArgs<ExtArgs>
     raza?: boolean | RazaDefaultArgs<ExtArgs>
     categoria?: boolean | CategoriasDefaultArgs<ExtArgs>
@@ -2566,9 +2590,11 @@ export namespace Prisma {
     razaId?: boolean
     categoriaId?: boolean
     generoId?: boolean
+    latitud?: boolean
+    longitud?: boolean
   }
 
-  export type MascotasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "foto" | "estado" | "usuarioId" | "razaId" | "categoriaId" | "generoId", ExtArgs["result"]["mascotas"]>
+  export type MascotasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "foto" | "estado" | "usuarioId" | "razaId" | "categoriaId" | "generoId" | "latitud" | "longitud", ExtArgs["result"]["mascotas"]>
   export type MascotasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     usuario?: boolean | UsuariosDefaultArgs<ExtArgs>
     raza?: boolean | RazaDefaultArgs<ExtArgs>
@@ -2593,6 +2619,8 @@ export namespace Prisma {
       razaId: number
       categoriaId: number
       generoId: number
+      latitud: number | null
+      longitud: number | null
     }, ExtArgs["result"]["mascotas"]>
     composites: {}
   }
@@ -2974,6 +3002,8 @@ export namespace Prisma {
     readonly razaId: FieldRef<"Mascotas", 'Int'>
     readonly categoriaId: FieldRef<"Mascotas", 'Int'>
     readonly generoId: FieldRef<"Mascotas", 'Int'>
+    readonly latitud: FieldRef<"Mascotas", 'Float'>
+    readonly longitud: FieldRef<"Mascotas", 'Float'>
   }
     
 
@@ -6235,7 +6265,9 @@ export namespace Prisma {
     usuarioId: 'usuarioId',
     razaId: 'razaId',
     categoriaId: 'categoriaId',
-    generoId: 'generoId'
+    generoId: 'generoId',
+    latitud: 'latitud',
+    longitud: 'longitud'
   };
 
   export type MascotasScalarFieldEnum = (typeof MascotasScalarFieldEnum)[keyof typeof MascotasScalarFieldEnum]
@@ -6280,6 +6312,14 @@ export namespace Prisma {
   };
 
   export type UsuariosOrderByRelevanceFieldEnum = (typeof UsuariosOrderByRelevanceFieldEnum)[keyof typeof UsuariosOrderByRelevanceFieldEnum]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   export const MascotasOrderByRelevanceFieldEnum: {
@@ -6412,6 +6452,8 @@ export namespace Prisma {
     razaId?: IntFilter<"Mascotas"> | number
     categoriaId?: IntFilter<"Mascotas"> | number
     generoId?: IntFilter<"Mascotas"> | number
+    latitud?: FloatNullableFilter<"Mascotas"> | number | null
+    longitud?: FloatNullableFilter<"Mascotas"> | number | null
     usuario?: XOR<UsuariosScalarRelationFilter, UsuariosWhereInput>
     raza?: XOR<RazaScalarRelationFilter, RazaWhereInput>
     categoria?: XOR<CategoriasScalarRelationFilter, CategoriasWhereInput>
@@ -6427,6 +6469,8 @@ export namespace Prisma {
     razaId?: SortOrder
     categoriaId?: SortOrder
     generoId?: SortOrder
+    latitud?: SortOrderInput | SortOrder
+    longitud?: SortOrderInput | SortOrder
     usuario?: UsuariosOrderByWithRelationInput
     raza?: RazaOrderByWithRelationInput
     categoria?: CategoriasOrderByWithRelationInput
@@ -6446,6 +6490,8 @@ export namespace Prisma {
     razaId?: IntFilter<"Mascotas"> | number
     categoriaId?: IntFilter<"Mascotas"> | number
     generoId?: IntFilter<"Mascotas"> | number
+    latitud?: FloatNullableFilter<"Mascotas"> | number | null
+    longitud?: FloatNullableFilter<"Mascotas"> | number | null
     usuario?: XOR<UsuariosScalarRelationFilter, UsuariosWhereInput>
     raza?: XOR<RazaScalarRelationFilter, RazaWhereInput>
     categoria?: XOR<CategoriasScalarRelationFilter, CategoriasWhereInput>
@@ -6461,6 +6507,8 @@ export namespace Prisma {
     razaId?: SortOrder
     categoriaId?: SortOrder
     generoId?: SortOrder
+    latitud?: SortOrderInput | SortOrder
+    longitud?: SortOrderInput | SortOrder
     _count?: MascotasCountOrderByAggregateInput
     _avg?: MascotasAvgOrderByAggregateInput
     _max?: MascotasMaxOrderByAggregateInput
@@ -6480,6 +6528,8 @@ export namespace Prisma {
     razaId?: IntWithAggregatesFilter<"Mascotas"> | number
     categoriaId?: IntWithAggregatesFilter<"Mascotas"> | number
     generoId?: IntWithAggregatesFilter<"Mascotas"> | number
+    latitud?: FloatNullableWithAggregatesFilter<"Mascotas"> | number | null
+    longitud?: FloatNullableWithAggregatesFilter<"Mascotas"> | number | null
   }
 
   export type RazaWhereInput = {
@@ -6665,6 +6715,8 @@ export namespace Prisma {
     nombre: string
     foto: string
     estado: $Enums.estado
+    latitud?: number | null
+    longitud?: number | null
     usuario: UsuariosCreateNestedOneWithoutMascotasInput
     raza: RazaCreateNestedOneWithoutMascotaInput
     categoria: CategoriasCreateNestedOneWithoutMascotaInput
@@ -6680,12 +6732,16 @@ export namespace Prisma {
     razaId: number
     categoriaId: number
     generoId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasUpdateInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     foto?: StringFieldUpdateOperationsInput | string
     estado?: EnumestadoFieldUpdateOperationsInput | $Enums.estado
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
     usuario?: UsuariosUpdateOneRequiredWithoutMascotasNestedInput
     raza?: RazaUpdateOneRequiredWithoutMascotaNestedInput
     categoria?: CategoriasUpdateOneRequiredWithoutMascotaNestedInput
@@ -6701,6 +6757,8 @@ export namespace Prisma {
     razaId?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasCreateManyInput = {
@@ -6712,12 +6770,16 @@ export namespace Prisma {
     razaId: number
     categoriaId: number
     generoId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasUpdateManyMutationInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     foto?: StringFieldUpdateOperationsInput | string
     estado?: EnumestadoFieldUpdateOperationsInput | $Enums.estado
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasUncheckedUpdateManyInput = {
@@ -6729,6 +6791,8 @@ export namespace Prisma {
     razaId?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type RazaCreateInput = {
@@ -6951,6 +7015,17 @@ export namespace Prisma {
     not?: NestedEnumestadoFilter<$PrismaModel> | $Enums.estado
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type UsuariosScalarRelationFilter = {
     is?: UsuariosWhereInput
     isNot?: UsuariosWhereInput
@@ -6971,6 +7046,11 @@ export namespace Prisma {
     isNot?: GeneroWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type MascotasOrderByRelevanceInput = {
     fields: MascotasOrderByRelevanceFieldEnum | MascotasOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -6986,6 +7066,8 @@ export namespace Prisma {
     razaId?: SortOrder
     categoriaId?: SortOrder
     generoId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type MascotasAvgOrderByAggregateInput = {
@@ -6994,6 +7076,8 @@ export namespace Prisma {
     razaId?: SortOrder
     categoriaId?: SortOrder
     generoId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type MascotasMaxOrderByAggregateInput = {
@@ -7005,6 +7089,8 @@ export namespace Prisma {
     razaId?: SortOrder
     categoriaId?: SortOrder
     generoId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type MascotasMinOrderByAggregateInput = {
@@ -7016,6 +7102,8 @@ export namespace Prisma {
     razaId?: SortOrder
     categoriaId?: SortOrder
     generoId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type MascotasSumOrderByAggregateInput = {
@@ -7024,6 +7112,8 @@ export namespace Prisma {
     razaId?: SortOrder
     categoriaId?: SortOrder
     generoId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type EnumestadoWithAggregatesFilter<$PrismaModel = never> = {
@@ -7034,6 +7124,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumestadoFilter<$PrismaModel>
     _max?: NestedEnumestadoFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type RazaOrderByRelevanceInput = {
@@ -7203,6 +7309,14 @@ export namespace Prisma {
 
   export type EnumestadoFieldUpdateOperationsInput = {
     set?: $Enums.estado
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type UsuariosUpdateOneRequiredWithoutMascotasNestedInput = {
@@ -7441,6 +7555,17 @@ export namespace Prisma {
     not?: NestedEnumestadoFilter<$PrismaModel> | $Enums.estado
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedEnumestadoWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.estado | EnumestadoFieldRefInput<$PrismaModel>
     in?: $Enums.estado[]
@@ -7451,10 +7576,39 @@ export namespace Prisma {
     _max?: NestedEnumestadoFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type MascotasCreateWithoutUsuarioInput = {
     nombre: string
     foto: string
     estado: $Enums.estado
+    latitud?: number | null
+    longitud?: number | null
     raza: RazaCreateNestedOneWithoutMascotaInput
     categoria: CategoriasCreateNestedOneWithoutMascotaInput
     genero: GeneroCreateNestedOneWithoutMascotaInput
@@ -7468,6 +7622,8 @@ export namespace Prisma {
     razaId: number
     categoriaId: number
     generoId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasCreateOrConnectWithoutUsuarioInput = {
@@ -7508,6 +7664,8 @@ export namespace Prisma {
     razaId?: IntFilter<"Mascotas"> | number
     categoriaId?: IntFilter<"Mascotas"> | number
     generoId?: IntFilter<"Mascotas"> | number
+    latitud?: FloatNullableFilter<"Mascotas"> | number | null
+    longitud?: FloatNullableFilter<"Mascotas"> | number | null
   }
 
   export type UsuariosCreateWithoutMascotasInput = {
@@ -7658,6 +7816,8 @@ export namespace Prisma {
     nombre: string
     foto: string
     estado: $Enums.estado
+    latitud?: number | null
+    longitud?: number | null
     usuario: UsuariosCreateNestedOneWithoutMascotasInput
     categoria: CategoriasCreateNestedOneWithoutMascotaInput
     genero: GeneroCreateNestedOneWithoutMascotaInput
@@ -7671,6 +7831,8 @@ export namespace Prisma {
     usuarioId: number
     categoriaId: number
     generoId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasCreateOrConnectWithoutRazaInput = {
@@ -7703,6 +7865,8 @@ export namespace Prisma {
     nombre: string
     foto: string
     estado: $Enums.estado
+    latitud?: number | null
+    longitud?: number | null
     usuario: UsuariosCreateNestedOneWithoutMascotasInput
     raza: RazaCreateNestedOneWithoutMascotaInput
     genero: GeneroCreateNestedOneWithoutMascotaInput
@@ -7716,6 +7880,8 @@ export namespace Prisma {
     usuarioId: number
     razaId: number
     generoId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasCreateOrConnectWithoutCategoriaInput = {
@@ -7748,6 +7914,8 @@ export namespace Prisma {
     nombre: string
     foto: string
     estado: $Enums.estado
+    latitud?: number | null
+    longitud?: number | null
     usuario: UsuariosCreateNestedOneWithoutMascotasInput
     raza: RazaCreateNestedOneWithoutMascotaInput
     categoria: CategoriasCreateNestedOneWithoutMascotaInput
@@ -7761,6 +7929,8 @@ export namespace Prisma {
     usuarioId: number
     razaId: number
     categoriaId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasCreateOrConnectWithoutGeneroInput = {
@@ -7797,12 +7967,16 @@ export namespace Prisma {
     razaId: number
     categoriaId: number
     generoId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasUpdateWithoutUsuarioInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     foto?: StringFieldUpdateOperationsInput | string
     estado?: EnumestadoFieldUpdateOperationsInput | $Enums.estado
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
     raza?: RazaUpdateOneRequiredWithoutMascotaNestedInput
     categoria?: CategoriasUpdateOneRequiredWithoutMascotaNestedInput
     genero?: GeneroUpdateOneRequiredWithoutMascotaNestedInput
@@ -7816,6 +7990,8 @@ export namespace Prisma {
     razaId?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasUncheckedUpdateManyWithoutUsuarioInput = {
@@ -7826,6 +8002,8 @@ export namespace Prisma {
     razaId?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasCreateManyRazaInput = {
@@ -7836,12 +8014,16 @@ export namespace Prisma {
     usuarioId: number
     categoriaId: number
     generoId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasUpdateWithoutRazaInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     foto?: StringFieldUpdateOperationsInput | string
     estado?: EnumestadoFieldUpdateOperationsInput | $Enums.estado
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
     usuario?: UsuariosUpdateOneRequiredWithoutMascotasNestedInput
     categoria?: CategoriasUpdateOneRequiredWithoutMascotaNestedInput
     genero?: GeneroUpdateOneRequiredWithoutMascotaNestedInput
@@ -7855,6 +8037,8 @@ export namespace Prisma {
     usuarioId?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasUncheckedUpdateManyWithoutRazaInput = {
@@ -7865,6 +8049,8 @@ export namespace Prisma {
     usuarioId?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasCreateManyCategoriaInput = {
@@ -7875,12 +8061,16 @@ export namespace Prisma {
     usuarioId: number
     razaId: number
     generoId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasUpdateWithoutCategoriaInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     foto?: StringFieldUpdateOperationsInput | string
     estado?: EnumestadoFieldUpdateOperationsInput | $Enums.estado
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
     usuario?: UsuariosUpdateOneRequiredWithoutMascotasNestedInput
     raza?: RazaUpdateOneRequiredWithoutMascotaNestedInput
     genero?: GeneroUpdateOneRequiredWithoutMascotaNestedInput
@@ -7894,6 +8084,8 @@ export namespace Prisma {
     usuarioId?: IntFieldUpdateOperationsInput | number
     razaId?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasUncheckedUpdateManyWithoutCategoriaInput = {
@@ -7904,6 +8096,8 @@ export namespace Prisma {
     usuarioId?: IntFieldUpdateOperationsInput | number
     razaId?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasCreateManyGeneroInput = {
@@ -7914,12 +8108,16 @@ export namespace Prisma {
     usuarioId: number
     razaId: number
     categoriaId: number
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type MascotasUpdateWithoutGeneroInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     foto?: StringFieldUpdateOperationsInput | string
     estado?: EnumestadoFieldUpdateOperationsInput | $Enums.estado
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
     usuario?: UsuariosUpdateOneRequiredWithoutMascotasNestedInput
     raza?: RazaUpdateOneRequiredWithoutMascotaNestedInput
     categoria?: CategoriasUpdateOneRequiredWithoutMascotaNestedInput
@@ -7933,6 +8131,8 @@ export namespace Prisma {
     usuarioId?: IntFieldUpdateOperationsInput | number
     razaId?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type MascotasUncheckedUpdateManyWithoutGeneroInput = {
@@ -7943,6 +8143,8 @@ export namespace Prisma {
     usuarioId?: IntFieldUpdateOperationsInput | number
     razaId?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
 

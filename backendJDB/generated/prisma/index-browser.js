@@ -135,7 +135,9 @@ exports.Prisma.MascotasScalarFieldEnum = {
   usuarioId: 'usuarioId',
   razaId: 'razaId',
   categoriaId: 'categoriaId',
-  generoId: 'generoId'
+  generoId: 'generoId',
+  latitud: 'latitud',
+  longitud: 'longitud'
 };
 
 exports.Prisma.RazaScalarFieldEnum = {
@@ -162,6 +164,11 @@ exports.Prisma.UsuariosOrderByRelevanceFieldEnum = {
   nombre: 'nombre',
   email: 'email',
   password: 'password'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 exports.Prisma.MascotasOrderByRelevanceFieldEnum = {

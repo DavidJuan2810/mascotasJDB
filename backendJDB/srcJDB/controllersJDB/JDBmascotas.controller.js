@@ -42,14 +42,15 @@ export const getMascotaByIdJDB = async (req, res) => {
 
 // Crear una nueva mascota
 export const createMascotaJDB = async (req, res) => {
-  const { nombre, estado, usuarioId, razaId, categoriaId, generoId } = req.body;
+  const { nombre, estado, usuarioId, razaId, categoriaId, generoId, latitud, longitud } = req.body;
   const foto = req.file ? req.file.filename : null; // Usa solo el nombre del archivo
 
-  console.log('Datos recibidos en /api/mascotas:', { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId });
+  console.log('Datos recibidos en /api/mascotas:', { nombre, foto, estado, usuarioId, razaId, categoriaId, generoId, latitud, longitud });
 
   try {
     const nuevaMascota = await prisma.mascotas.create({
-      data: { nombre, foto, estado, usuarioId: parseInt(usuarioId), razaId: parseInt(razaId), categoriaId: parseInt(categoriaId), generoId: parseInt(generoId) },
+      data: { nombre, foto, estado, usuarioId: parseInt(usuarioId), razaId: parseInt(razaId), categoriaId: parseInt(categoriaId), generoId: parseInt(generoId), latitud: parseFloat(latitud), longitud: parseFloat(longitud),
+ },
     });
     console.log('Mascota creada:', nuevaMascota);
     res.status(201).json(nuevaMascota);
@@ -61,10 +62,10 @@ export const createMascotaJDB = async (req, res) => {
 // Actualizar una mascota
 export const updateMascotaJDB = async (req, res) => {
   const { id } = req.params;
-  const { nombre, estado, usuarioId, razaId, categoriaId, generoId } = req.body;
+  const { nombre, estado, usuarioId, razaId, categoriaId, generoId, latitud, longitud } = req.body;
   const foto = req.file ? req.file.filename : undefined; // Usar el nombre del archivo si se sube una nueva foto
 
-  console.log('Datos recibidos en /api/mascotas/:id:', { id, nombre, foto, estado, usuarioId, razaId, categoriaId, generoId });
+  console.log('Datos recibidos en /api/mascotas/:id:', { id, nombre, foto, estado, usuarioId, razaId, categoriaId, generoId, latitud, longitud });
 
   try {
     const updatedData = {
@@ -74,6 +75,9 @@ export const updateMascotaJDB = async (req, res) => {
       razaId: razaId ? parseInt(razaId) : undefined,
       categoriaId: categoriaId ? parseInt(categoriaId) : undefined,
       generoId: generoId ? parseInt(generoId) : undefined,
+      latitud: latitud ? parseFloat(latitud) : undefined,
+      longitud: longitud ? parseFloat(longitud) : undefined,
+
     };
     if (foto) updatedData.foto = foto; // Solo actualizar foto si se sube una nueva
 

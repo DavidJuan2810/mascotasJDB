@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const IMG_BASE_URL = 'http://localhost:3000/img/'; // Base URL para las imágenes
   const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB en bytes
 
+  // ⬇️ NUEVO: Inputs de latitud y longitud
+  const latitudInput = document.getElementById('latitud');
+  const longitudInput = document.getElementById('longitud');
+
   // Obtener token desde localStorage
   const token = localStorage.getItem('token');
   if (!token) {
@@ -92,6 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
       categoriaSelect.value = mascota.categoriaId ? mascota.categoriaId.toString() : '';
       generoSelect.value = mascota.generoId ? mascota.generoId.toString() : '';
       estadoSelect.value = mascota.estado || '';
+      latitudInput.value = mascota.latitud !== undefined && mascota.latitud !== null ? mascota.latitud : '';
+      longitudInput.value = mascota.longitud !== undefined && mascota.longitud !== null ? mascota.longitud : '';
+
 
       // Cargar la foto previa
       if (mascota.foto) {
@@ -129,11 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const estado = estadoSelect.value;
     const fotoFile = fotoInput.files[0];
 
+    // ⬇️ NUEVO: Obtener latitud y longitud
+    const latitud = parseFloat(latitudInput.value);
+    const longitud = parseFloat(longitudInput.value);
+
     // Validación
-    if (!nombre || !razaId || !categoriaId || !generoId || !estado) {
+    if (!nombre || isNaN(razaId) || isNaN(categoriaId) || isNaN(generoId) || !estado || isNaN(latitud) || isNaN(longitud)) {
       alert('Por favor, complete todos los campos.');
       return;
     }
+
     if (fotoFile && fotoFile.size > MAX_FILE_SIZE) {
       alert('La imagen es demasiado grande. El tamaño máximo es 2MB.');
       return;
@@ -146,6 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('razaId', razaId);
     formData.append('categoriaId', categoriaId);
     formData.append('generoId', generoId);
+    formData.append('latitud', String(latitud));
+    formData.append('longitud', String(longitud));
     if (fotoFile) {
       formData.append('foto', fotoFile);
     }
@@ -156,6 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
       razaId,
       categoriaId,
       generoId,
+      latitud,
+      longitud,
       foto: fotoFile ? fotoFile.name : 'sin cambio',
     });
 

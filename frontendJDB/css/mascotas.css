@@ -55,6 +55,28 @@ body {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
+.extra-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-secundario {
+  background-color: #76dd80;
+  color: #ffffff;
+  border: none;
+  padding: 8px 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.4s ease;
+  text-decoration: none; /* Esto hace que se vea como botón, sin subrayado */
+}
+
+.btn-secundario:hover {
+  background-color: #b63d3d;
+}
 
 .add-btn a:hover {
   background-color: #27ae60;
