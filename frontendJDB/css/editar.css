@@ -20,6 +20,102 @@ body {
   align-items: center; /* Centra horizontalmente */
 }
 
+/* Media query para tablets (hasta 768px) y móviles (hasta 480px) */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* Ajusta el ancho a 90% en pantallas más pequeñas */
+    padding: 20px; /* Reduce padding */
+    margin: 10px; /* Añade márgenes para evitar que toque los bordes */
+  }
+
+  .header {
+    margin-bottom: 15px; /* Reduce margen inferior */
+  }
+
+  .header .back, .header .close {
+    font-size: 18px; /* Reduce tamaño de las flechas/iconos */
+  }
+
+  .header h2 {
+    font-size: 16px; /* Reduce tamaño de fuente del título */
+  }
+
+  .img-container {
+    padding: 15px; /* Reduce padding */
+    margin-bottom: 5px; /* Reduce margen inferior */
+    margin-top: 5px; /* Reduce margen superior */
+  }
+
+  #foto-preview {
+    width: 120px; /* Reduce tamaño de la imagen */
+    height: 120px;
+  }
+
+  .img-container label img {
+    width: 25px; /* Reduce tamaño del ícono de subir imagen */
+    height: 25px;
+  }
+
+  form {
+    margin-top: 20px; /* Reduce margen superior del formulario */
+    gap: 8px; /* Reduce espacio entre campos */
+  }
+
+  .campo-formulario, input[type="text"], select {
+    padding: 8px; /* Reduce padding de los campos */
+    font-size: 12px; /* Reduce tamaño de fuente */
+  }
+
+  button {
+    padding: 10px; /* Reduce padding del botón */
+    font-size: 14px; /* Reduce tamaño de fuente */
+    margin-top: 15px; /* Reduce margen superior */
+  }
+}
+
+/* Media query específica para móviles (hasta 480px) */
+@media (max-width: 480px) {
+  .container {
+    width: 95%; /* Ajusta aún más en móviles */
+    padding: 15px; /* Reduce más el padding */
+  }
+
+  .header .back, .header .close {
+    font-size: 16px; /* Reduce más el tamaño de las flechas/iconos */
+  }
+
+  .header h2 {
+    font-size: 14px; /* Reduce más el tamaño de fuente del título */
+  }
+
+  .img-container {
+    padding: 10px; /* Reduce más el padding */
+    margin-bottom: 3px; /* Reduce más el margen inferior */
+    margin-top: 3px; /* Reduce más el margen superior */
+  }
+
+  #foto-preview {
+    width: 100px; /* Reduce más el tamaño de la imagen */
+    height: 100px;
+  }
+
+  .img-container label img {
+    width: 20px; /* Reduce más el tamaño del ícono de subir imagen */
+    height: 20px;
+  }
+
+  .campo-formulario, input[type="text"], select {
+    padding: 6px; /* Reduce más el padding de los campos */
+    font-size: 10px; /* Reduce más el tamaño de fuente */
+  }
+
+  button {
+    padding: 8px; /* Reduce más el padding del botón */
+    font-size: 12px; /* Reduce más el tamaño de fuente */
+    margin-top: 10px; /* Reduce más el margen superior */
+  }
+}
+
 .header {
   display: flex;
   justify-content: space-between;

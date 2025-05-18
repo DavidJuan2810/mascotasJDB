@@ -20,6 +20,91 @@ body {
   align-items: center;
 }
 
+/* Media query para tablets (hasta 768px) y móviles (hasta 480px) */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* Ajusta el ancho a 90% en pantallas más pequeñas */
+    padding: 15px; /* Reduce padding */
+    margin: 10px; /* Añade márgenes para evitar que toque los bordes */
+  }
+
+  .header {
+    margin-bottom: 15px; /* Reduce margen inferior */
+  }
+
+  .header .back, .header .close {
+    font-size: 18px; /* Reduce tamaño de las flechas/iconos */
+  }
+
+  .header h2 {
+    font-size: 16px; /* Reduce tamaño de fuente del título */
+  }
+
+  .mascota-detail {
+    margin-top: 20px; /* Reduce margen superior */
+  }
+
+  .img-container {
+    margin-bottom: 15px; /* Reduce margen inferior */
+    margin-top: 15px; /* Reduce margen superior */
+  }
+
+  #mascota-foto {
+    width: 120px; /* Reduce tamaño de la imagen */
+    height: 120px;
+  }
+
+  .info-container {
+    margin-top: 20px; /* Reduce margen superior */
+    gap: 8px; /* Reduce espacio entre items */
+  }
+
+  .info-item {
+    padding: 8px; /* Reduce padding */
+    font-size: 12px; /* Reduce tamaño de fuente */
+  }
+}
+
+/* Media query específica para móviles (hasta 480px) */
+@media (max-width: 480px) {
+  .container {
+    width: 95%; /* Ajusta aún más en móviles */
+    padding: 10px; /* Reduce más el padding */
+  }
+
+  .header .back, .header .close {
+    font-size: 16px; /* Reduce más el tamaño de las flechas/iconos */
+  }
+
+  .header h2 {
+    font-size: 14px; /* Reduce más el tamaño de fuente del título */
+  }
+
+  .mascota-detail {
+    margin-top: 15px; /* Reduce más el margen superior */
+  }
+
+  .img-container {
+    margin-bottom: 10px; /* Reduce más el margen inferior */
+    margin-top: 10px; /* Reduce más el margen superior */
+  }
+
+  #mascota-foto {
+    width: 100px; /* Reduce más el tamaño de la imagen */
+    height: 100px;
+  }
+
+  .info-container {
+    margin-top: 15px; /* Reduce más el margen superior */
+    gap: 6px; /* Reduce más el espacio entre items */
+  }
+
+  .info-item {
+    padding: 6px; /* Reduce más el padding */
+    font-size: 10px; /* Reduce más el tamaño de fuente */
+  }
+}
+
 .header {
   display: flex;
   justify-content: space-between;

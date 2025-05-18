@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reportes de Mascotas</title>
+  <link rel="stylesheet" href="./css/reportes.css" />
+  <script src="./js/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <button class="back-button" onclick="window.location.href='mascotas.html'">Volver</button>
+      <h1>Reportes de Mascotas</h1>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="chartCanvas"></canvas>
+      <button class="chart-download-btn" onclick="downloadChart()">Descargar Gráfico</button>
+    </div>
+
+    <div class="controls">
+      <button onclick="loadReport('disponible')">Mascotas Disponibles</button>
+      <button onclick="loadReport('adoptado')">Mascotas Adoptadas</button>
+    </div>
+
+    <table id="reportTable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Estado</th>
+          <th>Género</th>
+          <th>Raza</th>
+          <th>Categoría</th>
+          <th>Usuario</th>
+          <th>Latitud</th>
+          <th>Longitud</th>
+        </tr>
+      </thead>
+      <tbody id="reportBody"></tbody>
+    </table>
+
+    <button class="download-btn" onclick="downloadPDF()" style="display: none;">Descargar PDF</button>
+  </div>
+
+  <script src="./js/reportes.js"></script>
+</body>
+</html>

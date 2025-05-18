@@ -31,14 +31,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const mascotas = await response.json();
 
+    console.log('Datos de mascotas:', mascotas); // Depuración para inspeccionar los datos
+
     mascotas.forEach(mascota => {
       if (mascota.latitud && mascota.longitud) {
         const marker = L.marker([mascota.latitud, mascota.longitud]).addTo(map);
 
+
         marker.bindPopup(`
           <strong>${mascota.nombre}</strong><br>
-          Estado: ${mascota.estado}<br>
-          Género: ${mascota.genero || 'N/A'}<br>
+          Estado: ${mascota.estado || 'N/A'}<br>
+          Género: ${mascota.genero?.nombre || 'N/A'}<br>
           Raza: ${mascota.raza?.nombre || 'N/A'}<br>
           Categoría: ${mascota.categoria?.nombre || 'N/A'}<br>
           Usuario: ${mascota.usuario?.nombre || 'N/A'}<br>

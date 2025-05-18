@@ -10,9 +10,26 @@
       height: 100vh;
       width: 100%;
     }
+    .back-button {
+      position: absolute;
+      top: 10px;
+      right: 10px; /* Cambiado de left a right para moverlo a la derecha */
+      z-index: 1000; /* Asegura que el botón esté sobre el mapa */
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .back-button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
+  <button class="back-button" onclick="window.location.href='mascotas.html'">Volver</button>
   <div id="map"></div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>

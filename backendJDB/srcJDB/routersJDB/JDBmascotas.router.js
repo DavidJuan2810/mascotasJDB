@@ -5,7 +5,8 @@ import {
   createMascotaJDB,
   updateMascotaJDB,
   patchMascotaJDB,
-  deleteMascotaJDB
+  deleteMascotaJDB,
+  generateReporteJDB
 } from '../controllersJDB/JDBmascotas.controller.js';
 import { authMiddlewareJDB } from '../middleware/auth.js';
 
@@ -27,5 +28,6 @@ routerMascotasJDB.get('/mascotas/:id',authMiddlewareJDB, getMascotaByIdJDB);
 routerMascotasJDB.put('/mascotas/:id',authMiddlewareJDB, upload.single('foto'), updateMascotaJDB);
 routerMascotasJDB.patch('/mascotas/:id',authMiddlewareJDB, patchMascotaJDB);
 routerMascotasJDB.delete('/mascotas/:id',authMiddlewareJDB, deleteMascotaJDB);
+routerMascotasJDB.get('/reportes/:estado', authMiddlewareJDB, generateReporteJDB);
 
 export default routerMascotasJDB;

@@ -1,5 +1,6 @@
 import { PrismaClient } from '../../generated/prisma/client.js';
 const prisma = new PrismaClient;
+import PDFDocument from 'pdfkit';
 
 // Obtener todas las mascotas
 export const getMascotasJDB = async (req, res) => {
@@ -123,5 +124,125 @@ export const deleteMascotaJDB = async (req, res) => {
   } catch (error) {
     console.error('Error al eliminar mascota:', error);
     res.status(500).json({ error: 'Error al eliminar mascota' });
+  }
+};
+
+// Generar reporte de mascotas por estado
+
+export const generateReporteJDB = async (req, res) => {
+  const { estado } = req.params;
+  const validEstados = ['disponible', 'adoptado'];
+
+  if (!validEstados.includes(estado)) {
+    return res.status(400).json({ error: 'Estado inválido. Use "disponible" o "adoptado"' });
+  }
+
+  try {
+    const mascotas = await prisma.mascotas.findMany({
+      where: { estado: estado },
+      include: {
+        usuario: true,
+        raza: true,
+        categoria: true,
+        genero: true,
+      },
+    });
+
+    console.log('Mascotas encontradas para el reporte:', mascotas);
+
+    if (!mascotas || mascotas.length === 0) {
+      return res.status(404).json({ error: `No se encontraron mascotas con estado "${estado}"` });
+    }
+
+    if (req.query.format === 'pdf') {
+      const doc = new PDFDocument({ margin: 40, size: 'A4' });
+      const filename = `reporte_mascotas_${estado}_${Date.now()}.pdf`;
+
+      res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET');
+      res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+
+      doc.pipe(res);
+
+      // Título
+      doc.fontSize(26)
+         .fillColor('#1E90FF')
+         .text(`Reporte de Mascotas ${estado === 'disponible' ? 'Disponibles' : 'Adoptadas'}`, {
+           align: 'center',
+           underline: true,
+         });
+      doc.moveDown(2);
+
+      // Tabla
+      const tableTop = 100;
+      const rowHeight = 25;
+      const colWidths = [80, 80, 60, 80, 80, 80, 60, 60];
+      const tableWidth = colWidths.reduce((sum, width) => sum + width, 0);
+      const startX = (doc.page.width - tableWidth) / 2;
+
+      // Encabezados
+      doc.fontSize(12)
+         .font('Helvetica-Bold')
+         .fillColor('#104E8B')
+         .rect(startX, tableTop, tableWidth, 30)
+         .fill('#104E8B')
+         .fillColor('#FFFFFF');
+      let x = startX;
+      const headers = ['Nombre', 'Estado', 'Género', 'Raza', 'Categoría', 'Usuario', 'Latitud', 'Longitud'];
+      headers.forEach((header, i) => {
+        doc.text(header, x + 5, tableTop + 8, { width: colWidths[i], align: 'left' });
+        x += colWidths[i];
+      });
+
+      // Filas
+      doc.font('Helvetica').fontSize(10).fillColor('#000000');
+      mascotas.forEach((mascota, index) => {
+        const y = tableTop + 30 + (index * rowHeight);
+        x = startX;
+
+        const genero = mascota.genero?.nombre || 'N/A';
+        const rowData = [
+          mascota.nombre || 'N/A',
+          mascota.estado || 'N/A',
+          genero,
+          mascota.raza?.nombre || 'N/A',
+          mascota.categoria?.nombre || 'N/A',
+          mascota.usuario?.nombre || 'N/A',
+          mascota.latitud?.toString() || 'N/A',
+          mascota.longitud?.toString() || 'N/A',
+        ];
+
+        rowData.forEach((cell, i) => {
+          const fillColor = index % 2 === 0 ? '#ADD8E6' : '#87CEEB';
+          doc.rect(x, y, colWidths[i], rowHeight)
+             .fillAndStroke(fillColor, '#104E8B')
+             .fillColor('#000000')
+             .text(cell, x + 5, y + 5, { width: colWidths[i] - 10, align: 'left' });
+          x += colWidths[i];
+        });
+      });
+
+      // Pie de página
+      const currentDate = new Date().toLocaleString('es-CO', {
+        timeZone: 'America/Bogota',
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      });
+      doc.fontSize(8)
+         .fillColor('#104E8B')
+         .text(`Generado el: ${currentDate}`, 40, doc.page.height - 50, { align: 'left' })
+         .text('Página 1', 0, doc.page.height - 50, { align: 'right', width: doc.page.width - 80 });
+
+      doc.end();
+    } else {
+      res.status(200).json(mascotas);
+    }
+  } catch (error) {
+    console.error('Error al generar reporte:', error);
+    res.status(500).json({ error: 'Error al generar reporte', details: error.message });
+  } finally {
+    await prisma.$disconnect();
   }
 };

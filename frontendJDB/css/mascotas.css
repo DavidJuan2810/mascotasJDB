@@ -16,7 +16,120 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   min-height: 100vh; /* Asegura que el contenedor sea al menos tan alto como la ventana */
   background-color: #2C4372; /* Fondo consistente */
-  /* Eliminamos overflow: hidden para que el contenedor crezca */
+}
+
+/* Media query para tablets (hasta 768px) y móviles (hasta 480px) */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%; /* Ajusta el ancho máximo a 90% en pantallas más pequeñas */
+    margin: 10px; /* Añade márgenes para evitar que toque los bordes */
+  }
+
+  .header {
+    padding: 10px 15px; /* Reduce padding en pantallas pequeñas */
+    font-size: 16px; /* Reduce tamaño de fuente */
+  }
+
+  .add-btn a {
+    padding: 8px 15px; /* Reduce padding del botón */
+    font-size: 14px; /* Reduce tamaño de fuente */
+    width: 90%; /* Ajusta el ancho para que no se desborde */
+  }
+
+  .extra-buttons {
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    gap: 5px;
+  }
+
+  .btn-secundario {
+    padding: 6px 30px; /* Reduce padding */
+    font-size: 12px; /* Reduce tamaño de fuente */
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+
+  .mascota-list {
+    padding: 5px; /* Reduce padding */
+  }
+
+  .mascota-item {
+    padding: 8px; /* Reduce padding */
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    align-items: flex-start; /* Alinea elementos al inicio */
+  }
+
+  .mascota-item img {
+    width: 40px; /* Reduce tamaño de la imagen */
+    height: 40px;
+    margin-bottom: 5px; /* Añade espacio debajo de la imagen */
+    margin-right: 0; /* Elimina margen derecho */
+  }
+
+  .mascota-info h3 {
+    font-size: 14px; /* Reduce tamaño de fuente */
+  }
+
+  .mascota-info p {
+    font-size: 12px; /* Reduce tamaño de fuente */
+  }
+
+  .mascota-actions {
+    width: 100%; /* Ocupa todo el ancho */
+    justify-content: space-between; /* Distribuye botones uniformemente */
+    margin-top: 5px; /* Añade espacio arriba */
+  }
+
+  .mascota-actions button {
+    margin-left: 0; /* Elimina margen izquierdo */
+  }
+
+  .mascota-actions img {
+    width: 30px; /* Reduce tamaño de los íconos */
+    height: 30px;
+  }
+}
+
+/* Media query específica para móviles (hasta 480px) */
+@media (max-width: 480px) {
+  .container {
+    max-width: 95%; /* Ajusta aún más en móviles */
+  }
+
+  .header {
+    font-size: 14px; /* Reduce más el tamaño de fuente */
+  }
+
+  .add-btn a {
+    font-size: 12px; /* Reduce más el tamaño de fuente */
+    width: 95%; /* Ajusta el ancho */
+  }
+
+  .btn-secundario {
+    padding: 8px ; /* Reduce padding aún más */
+    font-size: 10px; /* Reduce tamaño de fuente */
+    width: 80%;
+  }
+
+  .mascota-item {
+    padding: 5px; /* Reduce padding */
+  }
+
+  .mascota-item img {
+    width: 30px; /* Reduce más el tamaño de la imagen */
+    height: 30px;
+  }
+
+  .mascota-info h3 {
+    font-size: 12px; /* Reduce más el tamaño de fuente */
+  }
+
+  .mascota-info p {
+    font-size: 10px; /* Reduce más el tamaño de fuente */
+  }
+
+  .mascota-actions img {
+    width: 25px; /* Reduce más el tamaño de los íconos */
+    height: 25px;
+  }
 }
 
 .header {
@@ -55,6 +168,11 @@ body {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
+
+.add-btn a:hover {
+  background-color: #27ae60;
+}
+
 .extra-buttons {
   display: flex;
   justify-content: center;
@@ -66,7 +184,7 @@ body {
   background-color: #76dd80;
   color: #ffffff;
   border: none;
-  padding: 8px 40px;
+  padding: 10px 30px;
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
@@ -76,10 +194,6 @@ body {
 
 .btn-secundario:hover {
   background-color: #b63d3d;
-}
-
-.add-btn a:hover {
-  background-color: #27ae60;
 }
 
 .mascota-list {
