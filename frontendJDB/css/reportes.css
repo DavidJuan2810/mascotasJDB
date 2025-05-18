@@ -63,6 +63,42 @@ body {
   position: relative;
 }
 
+.chart-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.arrow {
+  background-color: #34495e;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+.arrow:hover {
+  background-color: #2ecc71;
+}
+
 #chartCanvas {
   width: 100% !important;
   height: 300px !important;
@@ -187,6 +223,16 @@ th {
     padding: 10px;
   }
 
+  .chart-navigation {
+    padding: 0 30px; /* Espacio para las flechas */
+  }
+
+  .arrow {
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+  }
+
   #chartCanvas {
     height: 250px !important;
   }
@@ -210,6 +256,16 @@ th {
   .download-btn,
   .chart-download-btn {
     width: 150px;
+    font-size: 14px;
+  }
+
+  .chart-navigation {
+    padding: 0 25px; /* Espacio para las flechas */
+  }
+
+  .arrow {
+    width: 20px;
+    height: 20px;
     font-size: 14px;
   }
 

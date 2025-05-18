@@ -15,7 +15,11 @@
     </div>
 
     <div class="chart-container">
-      <canvas id="chartCanvas"></canvas>
+      <div class="chart-navigation">
+        <button class="arrow left-arrow" onclick="switchChart(-1)">&#9664;</button>
+        <canvas id="chartCanvas"></canvas>
+        <button class="arrow right-arrow" onclick="switchChart(1)">&#9654;</button>
+      </div>
       <button class="chart-download-btn" onclick="downloadChart()">Descargar Gráfico</button>
     </div>
 
